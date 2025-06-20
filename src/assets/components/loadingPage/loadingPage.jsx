@@ -18,7 +18,7 @@ const Loading = () => {
 
         {/* Gambar Halo */}
         <img
-          src="/public/images/halo.png"
+          src="/images/halo.png"
           alt="Hello Icon"
           className={`w-16 h-16 md:w-24 md:h-24 animate-pulse transform transition-all duration-1000 ease-out ${
             animate ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'

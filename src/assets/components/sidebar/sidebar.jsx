@@ -43,32 +43,32 @@ const Sidebar = () => {
       <ul className="flex flex-col items-center space-y-4">
         <li>
           <a href="https://github.com/Acelinoo" target="_blank" rel="noopener noreferrer">
-            <img src="/public/images/github.png" alt="Github" className="w-7 object-contain hover:scale-125 transition-transform" />
+            <img src="/images/github.png" alt="Github" className="w-7 object-contain hover:scale-125 transition-transform" />
           </a>
         </li>
         <li>
           <a href="https://www.instagram.com/acelino/" target="_blank" rel="noopener noreferrer">
-            <img src="/public/images/instagram.png" alt="Instagram" className="w-7 object-contain hover:scale-125 transition-transform" />
+            <img src="/images/instagram.png" alt="Instagram" className="w-7 object-contain hover:scale-125 transition-transform" />
           </a>
         </li>
         <li>
           <a href="https://www.tiktok.com/@acelino.k" target="_blank" rel="noopener noreferrer">
-            <img src="/public/images/tiktok.png" alt="TikTok" className="w-7 object-contain hover:scale-125 transition-transform" />
+            <img src="/images/tiktok.png" alt="TikTok" className="w-7 object-contain hover:scale-125 transition-transform" />
           </a>
         </li>
         <li>
           <a href="/" target="_blank" rel="noopener noreferrer">
-            <img src="/public/images/linkedin.png" alt="LinkedIn" className="w-7 object-contain hover:scale-125 transition-transform" />
+            <img src="/images/linkedin.png" alt="LinkedIn" className="w-7 object-contain hover:scale-125 transition-transform" />
           </a>
         </li>
         <li>
           <a href="/" target="_blank" rel="noopener noreferrer">
-            <img src="/public/images/twitter.png" alt="Twitter" className="w-7 object-contain hover:scale-125 transition-transform" />
+            <img src="/images/twitter.png" alt="Twitter" className="w-7 object-contain hover:scale-125 transition-transform" />
           </a>
         </li>
         <li>
           <a href="https://open.spotify.com/playlist/29cax5tGOyot4CIkeeeUNO?si=CQggO0GjQLyHoMtiisuQOA" target="_blank" rel="noopener noreferrer">
-            <img src="/public/images/spotify.png" alt="Spotify" className="w-7 object-contain hover:scale-125 transition-transform" />
+            <img src="/images/spotify.png" alt="Spotify" className="w-7 object-contain hover:scale-125 transition-transform" />
           </a>
         </li>
       </ul>

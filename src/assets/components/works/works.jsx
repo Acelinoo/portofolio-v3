@@ -4,7 +4,7 @@ const projects = [
   {
     title: 'Neonest.id',
     description: 'Service platform that is fast, efficient, secure.',
-    image: "/public/images/neonest.png",
+    image: "/images/neonest.png",
     link: 'https://neonestid.vercel.app',
     tech: ['Next.js', 'Tailwind CSS', 'Typescript'],
   },
