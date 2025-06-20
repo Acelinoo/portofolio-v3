@@ -3,12 +3,14 @@ import React from "react";
 const Education = () => {
   const data = [
     {
+      link:"https://smkyadikasoreang.sch.id/Home",
       title: "SMK Yadika Soreang",
       year: "2021 - 2024",
       description:
        "Pursuing a degree in Informatics to deepen my expertise in web development."
     },
     {
+      link:"https://unikom.ac.id/",
       title: "Universitas Komputer Indonesia",
       year: "2024 - Sekarang",
       description:

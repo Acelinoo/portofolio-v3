@@ -29,7 +29,7 @@ const MainContent = () => {
           {/* Gambar Scroll */}
           <a href="#about">
             <img
-              src="/src/assets/images/scroll.png"
+              src="/public/images/scroll.png"
               alt="scroll icon"
               className="h-5 md:h-[24px] w-auto mt-1"
             />
@@ -40,12 +40,12 @@ const MainContent = () => {
       {/* Gambar Profil */}
       <div className="relative w-44 h-60 md:w-56 md:h-72 group cursor-pointer mb-6 md:mb-0 z-0">
         <img
-          src="/src/assets/images/me1.png"
+          src="/public/images/me1.png"
           alt="shadow"
           className="absolute top-3 left-3 opacity-20 w-full transition-all duration-500 group-hover:top-0 group-hover:left-0"
         />
         <img
-          src="/src/assets/images/me1.png"
+          src="/public/images/me1.png"
           alt="foto"
           className="relative z-10 w-full transition-all duration-500"
         />

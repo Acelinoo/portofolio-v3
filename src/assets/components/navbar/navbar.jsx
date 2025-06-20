@@ -64,12 +64,12 @@ const Navbar = () => {
       {/* Music Icon */}
       <div className="w-6 h-6 cursor-pointer" onClick={togglePlay} title={isPlaying ? 'Pause' : 'Play'}>
         <img
-          src="/src/assets/images/music.png"
+          src="/public/images/music.png"
           alt="Music Icon"
           className={`w-full h-full ${isPlaying ? 'animate-spin' : ''}`}
           style={{ animationDuration: '4s' }}
         />
-        <audio ref={audioRef} src="/src/assets/music/You.mp3" preload="auto" />
+        <audio ref={audioRef} src="/public/music/You.mp3" preload="auto" />
       </div>
     </nav>
   );
