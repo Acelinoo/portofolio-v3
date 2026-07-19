@@ -31,6 +31,10 @@ const MainContent = () => {
             <img
               src="/images/scroll.png"
               alt="scroll icon"
+              width="24"
+              height="24"
+              fetchpriority="high"
+              decoding="sync"
               className="h-5 md:h-[24px] w-auto mt-1 dark:invert hover:-translate-y-1 transition-transform"
             />
           </a>
@@ -40,13 +44,21 @@ const MainContent = () => {
       {/* Gambar Profil */}
       <div className="relative w-44 h-60 md:w-56 md:h-72 group cursor-pointer mb-6 md:mb-0 z-0">
         <img
-          src="/images/me1.png"
+          src="/images/me1.webp"
           alt="shadow"
+          width="224"
+          height="288"
+          fetchpriority="high"
+          decoding="sync"
           className="absolute top-3 left-3 opacity-20 w-full transition-all duration-500 group-hover:top-0 group-hover:left-0"
         />
         <img
-          src="/images/me1.png"
+          src="/images/me1.webp"
           alt="foto"
+          width="224"
+          height="288"
+          fetchpriority="high"
+          decoding="sync"
           className="relative z-10 w-full transition-all duration-500"
         />
       </div>

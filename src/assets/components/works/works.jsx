@@ -6,7 +6,7 @@ const projects = [
     id: 'project-1',
     title: 'Neonest.id',
     description: 'Developed a robust service platform frontend. Optimized UI components using Next.js and Tailwind CSS, reducing layout shifts and improving rendering speed.',
-    image: "/images/neonest.png",
+    image: "/images/neonest.webp",
     link: 'https://neonestid.vercel.app',
     tech: ['Next.js', 'Tailwind CSS', 'Typescript'],
   },
@@ -14,7 +14,7 @@ const projects = [
     id: 'project-2',
     title: 'OrbitStation',
     description: 'Built a real-time ISS tracker. Engineered efficient backend pipelines with Laravel to handle live telemetry data with minimal latency.',
-    image: '/src/assets/images/grosirfy.png',
+    image: '/src/assets/images/grosirfy.webp',
     link: '#',
     tech: ['Laravel', 'Vue'],
   },
@@ -22,15 +22,56 @@ const projects = [
     id: 'project-3',
     title: 'TEvest',
     description: 'Designed an online ticketing system. Structured scalable database architecture to support high concurrency during peak ticket sales.',
-    image: '/src/assets/images/tevest.png',
+    image: '/src/assets/images/tevest.webp',
     link: '#',
     tech: ['React', 'Tailwind CSS'],
   },
 ];
 
-const ProjectCard = ({ project, setActiveProject }) => {
+const ProjectCardMobile = ({ project }) => {
+  return (
+    <div id={project.id} className="py-6 md:py-12">
+      <a 
+        href={project.link} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="group relative z-10 bg-white dark:bg-[#11223A] border border-gray-100 dark:border-gray-800 rounded-3xl overflow-hidden shadow-lg flex flex-col w-full"
+      >
+        <div className="w-full overflow-hidden h-64 border-b border-gray-100 dark:border-gray-800 relative bg-gray-50 dark:bg-gray-900">
+          <img 
+            src={project.image} 
+            alt={project.title} 
+            width="800"
+            height="450"
+            className="w-full h-full object-cover" 
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        
+        <div className="p-6 flex flex-col justify-center">
+          <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">
+            {project.title}
+          </h3>
+          <p className="text-sm text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+            {project.description}
+          </p>
+          
+          <div className="flex flex-wrap gap-2 mt-auto">
+            {project.tech.map((tech, idx) => (
+              <span key={idx} className="text-[10px] font-semibold tracking-wider bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 px-3 py-1.5 rounded-full uppercase border border-gray-200 dark:border-gray-700">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </a>
+    </div>
+  );
+};
+
+const ProjectCardDesktop = ({ project, setActiveProject }) => {
   const ref = useRef(null);
-  // Margin "-50% 0px -50% 0px" triggers when the center of the element crosses the center of the viewport
   const isInView = useInView(ref, { margin: "-50% 0px -50% 0px" });
 
   useEffect(() => {
@@ -45,29 +86,32 @@ const ProjectCard = ({ project, setActiveProject }) => {
         href={project.link} 
         target="_blank" 
         rel="noopener noreferrer" 
-        className="group relative z-10 bg-white dark:bg-[#11223A] border border-gray-100 dark:border-gray-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col w-full"
+        className="group relative z-10 bg-white dark:bg-[#11223A] border border-gray-100 dark:border-gray-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col w-full will-change-transform"
       >
-        <div className="w-full overflow-hidden h-64 md:h-[400px] border-b border-gray-100 dark:border-gray-800 relative bg-gray-50 dark:bg-gray-900">
+        <div className="w-full overflow-hidden h-[400px] border-b border-gray-100 dark:border-gray-800 relative bg-gray-50 dark:bg-gray-900">
           <img 
             src={project.image} 
             alt={project.title} 
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+            width="800"
+            height="450"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 will-change-transform" 
             loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
         </div>
         
-        <div className="p-8 md:p-12 flex flex-col justify-center">
-          <h3 className="text-2xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">
+        <div className="p-12 flex flex-col justify-center">
+          <h3 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">
             {project.title}
           </h3>
-          <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
             {project.description}
           </p>
           
           <div className="flex flex-wrap gap-2 mt-auto">
             {project.tech.map((tech, idx) => (
-              <span key={idx} className="text-[10px] md:text-xs font-semibold tracking-wider bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 px-3 py-1.5 rounded-full uppercase border border-gray-200 dark:border-gray-700">
+              <span key={idx} className="text-xs font-semibold tracking-wider bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 px-3 py-1.5 rounded-full uppercase border border-gray-200 dark:border-gray-700">
                 {tech}
               </span>
             ))}
@@ -80,6 +124,14 @@ const ProjectCard = ({ project, setActiveProject }) => {
 
 const Works = () => {
   const [activeProject, setActiveProject] = useState(projects[0].id);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    handleResize(); // Check immediately on mount
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleScrollTo = (id) => {
     const element = document.getElementById(id);
@@ -136,11 +188,15 @@ const Works = () => {
           {/* Right Column: Scrollable Content */}
           <div className="lg:col-span-8 flex flex-col">
             {projects.map((project) => (
-              <ProjectCard 
-                key={project.id} 
-                project={project} 
-                setActiveProject={setActiveProject} 
-              />
+              isMobile ? (
+                <ProjectCardMobile key={project.id} project={project} />
+              ) : (
+                <ProjectCardDesktop 
+                  key={project.id} 
+                  project={project} 
+                  setActiveProject={setActiveProject} 
+                />
+              )
             ))}
           </div>
 
