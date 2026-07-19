@@ -16,14 +16,14 @@ const MainContent = () => {
     >
       {/* Konten Teks */}
       <div className="mt-6 md:mt-0 md:mr-12 z-10">
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-wide leading-tight text-gray-900 dark:text-white">
           MARCHELINO <br /> KURNIAWAN
         </h1>
 
         <div className="flex items-center gap-3 justify-center md:justify-start mt-4 flex-wrap">
           <div className="flex flex-col items-center md:items-start">
-            <p className="text-base md:text-lg font-semibold">WEB DEVELOPER</p>
-            <span className="h-[2px] bg-black mt-1 animate-line w-full max-w-[140px]" />
+            <p className="text-base md:text-lg font-semibold tracking-wider text-gray-800 dark:text-gray-200">WEB DEVELOPER</p>
+            <span className="h-[2px] bg-black dark:bg-white mt-1 animate-line w-full max-w-[140px]" />
           </div>
 
           {/* Gambar Scroll */}
@@ -31,7 +31,7 @@ const MainContent = () => {
             <img
               src="/images/scroll.png"
               alt="scroll icon"
-              className="h-5 md:h-[24px] w-auto mt-1"
+              className="h-5 md:h-[24px] w-auto mt-1 dark:invert hover:-translate-y-1 transition-transform"
             />
           </a>
         </div>

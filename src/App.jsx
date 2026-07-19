@@ -2,6 +2,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Home from "./assets/pages/index";
+import NotFound from "./assets/pages/NotFound";
 import Loading from './assets/components/loadingPage/loadingPage';
 
 
@@ -24,6 +25,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
