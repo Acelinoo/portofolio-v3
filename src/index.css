@@ -11,3 +11,11 @@ body {
 }
 
 
+
+@keyframes smooth-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.hover-smooth-bounce:hover {
+  animation: smooth-bounce 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+}

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useInView } from 'framer-motion';
 
 const projects = [
   {
+    id: 'project-1',
     title: 'Neonest.id',
     description: 'Developed a robust service platform frontend. Optimized UI components using Next.js and Tailwind CSS, reducing layout shifts and improving rendering speed.',
     image: "/images/neonest.png",
@@ -9,14 +11,16 @@ const projects = [
     tech: ['Next.js', 'Tailwind CSS', 'Typescript'],
   },
   {
-    title: 'OrbitStation - MAINTENANCE',
+    id: 'project-2',
+    title: 'OrbitStation',
     description: 'Built a real-time ISS tracker. Engineered efficient backend pipelines with Laravel to handle live telemetry data with minimal latency.',
     image: '/src/assets/images/grosirfy.png',
     link: '#',
     tech: ['Laravel', 'Vue'],
   },
   {
-    title: 'TEvest - MAINTENANCE',
+    id: 'project-3',
+    title: 'TEvest',
     description: 'Designed an online ticketing system. Structured scalable database architecture to support high concurrency during peak ticket sales.',
     image: '/src/assets/images/tevest.png',
     link: '#',
@@ -24,37 +28,123 @@ const projects = [
   },
 ];
 
-const Works = () => {
+const ProjectCard = ({ project, setActiveProject }) => {
+  const ref = useRef(null);
+  // Margin "-50% 0px -50% 0px" triggers when the center of the element crosses the center of the viewport
+  const isInView = useInView(ref, { margin: "-50% 0px -50% 0px" });
+
+  useEffect(() => {
+    if (isInView) {
+      setActiveProject(project.id);
+    }
+  }, [isInView, project.id, setActiveProject]);
+
   return (
-    <section id="works" className="py-16 px-4 md:px-16 bg-gray-50 dark:bg-[#0B192C]/50 transition-colors duration-300 w-full">
-      <h2 className="text-2xl md:text-3xl font-extrabold mb-12 text-center tracking-wide text-gray-900 dark:text-white">My Works</h2>
+    <div id={project.id} ref={ref} className="min-h-[80vh] flex items-center py-12 md:py-24">
+      <a 
+        href={project.link} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="group relative z-10 bg-white dark:bg-[#11223A] border border-gray-100 dark:border-gray-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col w-full"
+      >
+        <div className="w-full overflow-hidden h-64 md:h-[400px] border-b border-gray-100 dark:border-gray-800 relative bg-gray-50 dark:bg-gray-900">
+          <img 
+            src={project.image} 
+            alt={project.title} 
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+        </div>
+        
+        <div className="p-8 md:p-12 flex flex-col justify-center">
+          <h3 className="text-2xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">
+            {project.title}
+          </h3>
+          <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            {project.description}
+          </p>
+          
+          <div className="flex flex-wrap gap-2 mt-auto">
+            {project.tech.map((tech, idx) => (
+              <span key={idx} className="text-[10px] md:text-xs font-semibold tracking-wider bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 px-3 py-1.5 rounded-full uppercase border border-gray-200 dark:border-gray-700">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </a>
+    </div>
+  );
+};
+
+const Works = () => {
+  const [activeProject, setActiveProject] = useState(projects[0].id);
+
+  const handleScrollTo = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
+  return (
+    <section id="works" className="relative bg-gray-50 dark:bg-[#0B192C] transition-colors duration-300 w-full pt-32 pb-20">
       
-      {/* Projects Grid */}
-      <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 max-w-6xl mx-auto">
-        {projects.map((project, index) => (
-          <a 
-            key={index} 
-            href={project.link} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="group block bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-          >
-            <div className="overflow-hidden h-40">
-              <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div className="p-5">
-              <h3 className="text-lg font-bold mb-1 text-gray-900 dark:text-white">{project.title}</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">{project.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((tech, idx) => (
-                  <span key={idx} className="text-[10px] font-semibold tracking-wider bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-2 py-1 rounded-full uppercase">
-                    {tech}
-                  </span>
-                ))}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+        <h2 className="text-3xl md:text-4xl font-extrabold mb-8 md:mb-16 text-center lg:text-left tracking-wide text-gray-900 dark:text-white">
+          My Works
+        </h2>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 relative">
+          
+          {/* Left Column: Sticky Indicator (Hidden on Mobile) */}
+          <div className="hidden lg:block lg:col-span-4 relative">
+            <div className="sticky top-32">
+              <div className="relative pl-8 py-4 border-l-[3px] border-gray-200 dark:border-gray-800">
+                <ul className="space-y-12">
+                  {projects.map((project) => {
+                    const isActive = activeProject === project.id;
+                    return (
+                      <li key={project.id} className="relative cursor-pointer group" onClick={() => handleScrollTo(project.id)}>
+                        {/* Indicator Dot */}
+                        <span 
+                          className={`absolute -left-[38px] top-1.5 h-4 w-4 rounded-full transition-all duration-300 ${
+                            isActive 
+                              ? 'bg-blue-600 dark:bg-cyan-400 scale-125 ring-4 ring-blue-100 dark:ring-cyan-900/50' 
+                              : 'bg-gray-300 dark:bg-gray-700 scale-100 group-hover:bg-gray-400 dark:group-hover:bg-gray-600'
+                          }`}
+                        />
+                        {/* Title Text */}
+                        <span 
+                          className={`text-xl transition-all duration-300 block ${
+                            isActive 
+                              ? 'text-gray-900 dark:text-cyan-400 font-extrabold translate-x-3' 
+                              : 'text-gray-400 dark:text-gray-500 font-medium group-hover:text-gray-600 dark:group-hover:text-gray-400'
+                          }`}
+                        >
+                          {project.title}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
             </div>
-          </a>
-        ))}
+          </div>
+
+          {/* Right Column: Scrollable Content */}
+          <div className="lg:col-span-8 flex flex-col">
+            {projects.map((project) => (
+              <ProjectCard 
+                key={project.id} 
+                project={project} 
+                setActiveProject={setActiveProject} 
+              />
+            ))}
+          </div>
+
+        </div>
       </div>
     </section>
   );
