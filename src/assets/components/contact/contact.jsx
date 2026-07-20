@@ -7,7 +7,7 @@ const Contact = () => {
   const [copied, setCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const email = "marchelinokurniawan321@gmail.com"; // Ganti dengan email asli jika ada
+  const email = "marchelinokurniawan321@gmail.com"; // Replace with real email if any
 
   const handleCopy = () => {
     navigator.clipboard.writeText(email);

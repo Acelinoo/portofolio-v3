@@ -12,7 +12,7 @@ const Education = () => {
     {
       link:"https://unikom.ac.id/",
       title: "Universitas Komputer Indonesia",
-      year: "2024 - Sekarang",
+      year: "2024 - Present",
       description:
        "Majored in Software Engineering, where I began learning coding and web development."
     },
