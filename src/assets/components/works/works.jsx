@@ -12,20 +12,12 @@ const projects = [
   },
   {
     id: 'project-2',
-    title: 'OrbitStation',
-    description: 'Built a real-time ISS tracker. Engineered efficient backend pipelines with Laravel to handle live telemetry data with minimal latency.',
-    image: '/src/assets/images/grosirfy.webp',
-    link: '#',
-    tech: ['Laravel', 'Vue'],
-  },
-  {
-    id: 'project-3',
-    title: 'TEvest',
-    description: 'Designed an online ticketing system. Structured scalable database architecture to support high concurrency during peak ticket sales.',
-    image: '/src/assets/images/tevest.webp',
-    link: '#',
-    tech: ['React', 'Tailwind CSS'],
-  },
+    title: 'Learn With Acel',
+    description: 'An interactive learning platform designed for a seamless educational experience, built with modern web technologies.',
+    image: '/images/learnwithacel.webp',
+    link: 'https://learnwithacel.vercel.app',
+    tech: ['React', 'Tailwind CSS', 'Next.js'],
+  }
 ];
 
 const ProjectCardMobile = ({ project }) => {
