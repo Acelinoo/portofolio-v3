@@ -7,14 +7,14 @@ const Education = () => {
       title: "SMK Yadika Soreang",
       year: "2021 - 2024",
       description:
-       "Pursuing a degree in Informatics to deepen my expertise in web development."
+       "Pursuing a degree in Informatics to deepen my expertise in web development.",
     },
     {
       link:"https://unikom.ac.id/",
       title: "Universitas Komputer Indonesia",
       year: "2024 - Present",
       description:
-       "Majored in Software Engineering, where I began learning coding and web development."
+       "Majored in Software Engineering, where I began learning coding and web development.",
     },
   ];
 

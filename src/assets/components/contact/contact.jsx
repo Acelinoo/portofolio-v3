@@ -7,7 +7,7 @@ const Contact = () => {
   const [copied, setCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const email = "marchelinokurniawan321@gmail.com"; // Replace with real email if any
+  const email = "marchelinokurniawan321@gmail.com";
 
   const handleCopy = () => {
     navigator.clipboard.writeText(email);
@@ -68,7 +68,10 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-4 md:px-16 bg-white dark:bg-transparent transition-colors duration-300 w-full relative z-10 overflow-hidden">
+    <section
+      id="contact"
+      className="py-24 px-4 md:px-16 bg-white dark:bg-transparent transition-colors duration-300 w-full relative z-10 overflow-hidden"
+    >
       <motion.div 
         className="max-w-2xl mx-auto"
         variants={containerVariants}
@@ -84,12 +87,14 @@ const Contact = () => {
         
         {/* Quick Copy Email */}
         <motion.div variants={itemVariants} className="flex flex-col items-center justify-center mb-12">
-          <div className="relative flex items-center gap-3 bg-gray-50/50 dark:bg-slate-900/30 border border-gray-200 dark:border-gray-800 px-5 py-2.5 rounded-full transition-colors duration-300">
-            <span className="text-gray-800 dark:text-gray-200 font-medium text-sm">{email}</span>
+          <div className="relative flex items-center gap-3 px-5 py-2.5 rounded-full bg-gray-50/50 dark:bg-slate-900/30 border border-gray-200 dark:border-gray-800 transition-colors duration-300">
+            <span className="font-medium text-sm text-gray-800 dark:text-gray-200">
+              {email}
+            </span>
             <div className="relative flex items-center">
               <button 
                 onClick={handleCopy}
-                className="p-1.5 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300 focus:outline-none group"
+                className="p-1.5 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors focus:outline-none group"
                 title="Copy Email"
               >
                 {copied ? <FiCheck className="text-green-500" /> : <FiCopy className="group-hover:text-slate-800 dark:group-hover:text-white transition-colors" />}
@@ -120,7 +125,7 @@ const Contact = () => {
                 name="name" 
                 required 
                 type="text" 
-                placeholder="Name" 
+                placeholder="Name"
                 className={inputClasses} 
               />
             </motion.div>
@@ -129,7 +134,7 @@ const Contact = () => {
                 name="email" 
                 required 
                 type="email" 
-                placeholder="Email Address" 
+                placeholder="Email Address"
                 className={inputClasses} 
               />
             </motion.div>
@@ -140,7 +145,7 @@ const Contact = () => {
               name="message" 
               required 
               rows="5" 
-              placeholder="Your message..." 
+              placeholder="Your message..."
               className={`${inputClasses} resize-none`}
             />
           </motion.div>

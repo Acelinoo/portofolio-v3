@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useInView } from 'framer-motion';
+import ShapeBlur from '../animations/ShapeBlur';
 
 const projects = [
   {
@@ -29,7 +30,10 @@ const ProjectCardMobile = ({ project }) => {
         rel="noopener noreferrer"
         className="group relative z-10 bg-white dark:bg-[#11223A] border border-gray-100 dark:border-gray-800 rounded-3xl overflow-hidden shadow-lg flex flex-col w-full"
       >
-        <div className="w-full overflow-hidden h-64 border-b border-gray-100 dark:border-gray-800 relative bg-gray-50 dark:bg-gray-900">
+        <div className="absolute inset-0 z-20 opacity-80 transition-opacity duration-700 pointer-events-none overflow-hidden flex justify-center items-center">
+          <ShapeBlur variation={0} pixelRatioProp={1} shapeSize={1.0} roundness={0.25} />
+        </div>
+        <div className="w-full overflow-hidden h-48 border-b border-gray-100 dark:border-gray-800 relative bg-gray-50 dark:bg-gray-900">
           <img
             src={project.image}
             alt={project.title}
@@ -80,7 +84,10 @@ const ProjectCardDesktop = ({ project, setActiveProject }) => {
         rel="noopener noreferrer"
         className="group relative z-10 bg-white dark:bg-[#11223A] border border-gray-100 dark:border-gray-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col w-full will-change-transform"
       >
-        <div className="w-full overflow-hidden h-[400px] border-b border-gray-100 dark:border-gray-800 relative bg-gray-50 dark:bg-gray-900">
+        <div className="absolute inset-0 z-20 opacity-80 transition-opacity duration-700 pointer-events-none overflow-hidden flex justify-center items-center">
+          <ShapeBlur variation={0} pixelRatioProp={1} shapeSize={1.0} roundness={0.25} borderSize={0.05} />
+        </div>
+        <div className="w-full overflow-hidden h-[240px] border-b border-gray-100 dark:border-gray-800 relative bg-gray-50 dark:bg-gray-900">
           <img
             src={project.image}
             alt={project.title}
@@ -133,8 +140,10 @@ const Works = () => {
   };
 
   return (
-    <section id="works" className="relative bg-gray-50 dark:bg-[#0B192C] transition-colors duration-300 w-full pt-32 pb-20">
-
+    <section
+      id="works"
+      className="relative transition-colors duration-300 w-full pt-32 pb-20 bg-gray-50 dark:bg-[#0B192C]"
+    >
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         <h2 className="text-3xl md:text-4xl font-extrabold mb-8 md:mb-16 text-center lg:text-left tracking-wide text-gray-900 dark:text-white">
           My Works
@@ -142,7 +151,7 @@ const Works = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 relative">
 
-          {/* Left Column: Sticky Indicator (Hidden on Mobile) */}
+          {/* Left Column: Sticky Indicator */}
           <div className="hidden lg:block lg:col-span-4 relative">
             <div className="sticky top-32">
               <div className="relative pl-8 py-4 border-l-[3px] border-gray-200 dark:border-gray-800">
@@ -154,15 +163,15 @@ const Works = () => {
                         {/* Indicator Dot */}
                         <span
                           className={`absolute -left-[38px] top-1.5 h-4 w-4 rounded-full transition-all duration-300 ${isActive
-                              ? 'bg-blue-600 dark:bg-cyan-400 scale-125 ring-4 ring-blue-100 dark:ring-cyan-900/50'
-                              : 'bg-gray-300 dark:bg-gray-700 scale-100 group-hover:bg-gray-400 dark:group-hover:bg-gray-600'
+                            ? 'bg-blue-600 dark:bg-cyan-400 scale-125 ring-4 ring-blue-100 dark:ring-cyan-900/50'
+                            : 'bg-gray-300 dark:bg-gray-700 scale-100 group-hover:bg-gray-400 dark:group-hover:bg-gray-600'
                             }`}
                         />
                         {/* Title Text */}
                         <span
                           className={`text-xl transition-all duration-300 block ${isActive
-                              ? 'text-gray-900 dark:text-cyan-400 font-extrabold translate-x-3'
-                              : 'text-gray-400 dark:text-gray-500 font-medium group-hover:text-gray-600 dark:group-hover:text-gray-400'
+                            ? 'text-gray-900 dark:text-cyan-400 font-extrabold translate-x-3'
+                            : 'text-gray-400 dark:text-gray-500 font-medium group-hover:text-gray-600 dark:group-hover:text-gray-400'
                             }`}
                         >
                           {project.title}

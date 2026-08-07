@@ -11,7 +11,7 @@ const MainContent = () => {
   return (
     <div
       className={`flex flex-col-reverse md:flex-row items-center justify-center min-h-screen px-6 md:px-8 text-center md:text-left
-        transition-all duration-700 ease-out
+        transition-all duration-700 ease-out relative
         ${animateIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
       {/* Konten Teks */}
