@@ -18,6 +18,14 @@ const projects = [
     image: '/images/LWA.png',
     link: 'https://learnwithacel.vercel.app',
     tech: ['React', 'Tailwind CSS', 'Next.js'],
+  },
+  {
+    id: 'project-3',
+    title: 'GerobakLink',
+    description: 'A web design & development studio platform providing digital website solutions for company profiles, online stores, digital invitations, and personal portfolios.',
+    image: '/images/gerobaklink.png',
+    link: 'https://gerobaklink.vercel.app',
+    tech: ['React', 'Tailwind CSS', 'JavaScript'],
   }
 ];
 
