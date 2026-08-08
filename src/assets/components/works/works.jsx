@@ -26,6 +26,14 @@ const projects = [
     image: '/images/gerobaklink.png',
     link: 'https://gerobaklink.vercel.app',
     tech: ['React', 'Tailwind CSS', 'JavaScript'],
+  },
+  {
+    id: 'project-4',
+    title: 'Kopi Tenang Jiwa',
+    description: 'A serene and modern digital cafe platform for a premium coffee shop. Features curated Nusantara coffee selections, interactive mood-based menu recommendation, and an aesthetic warm interface.',
+    image: '/images/kopitenangjiwa.png',
+    link: 'https://kopitenangjiwa.vercel.app',
+    tech: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
   }
 ];
 
