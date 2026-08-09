@@ -53,7 +53,7 @@ const projects = [
   },
   {
     id: 'project-7',
-    title: 'Acelino Company Profile',
+    title: 'MONOLOTIK',
     description: 'A modern corporate company profile website for logistics & MSME supply chain solutions featuring sleek dark UI design, interactive portfolio showcase, smooth animations, and corporate inquiries.',
     image: '/images/acelino-company-profile.webp',
     link: 'https://acelino-company-profile.vercel.app',
