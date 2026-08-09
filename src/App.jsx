@@ -7,17 +7,29 @@ import SplashCursor from './assets/components/animations/SplashCursor';
 import { ThemeProvider } from './assets/components/theme/ThemeContext';
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [showCursor, setShowCursor] = useState(false);
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // waktu loading 2 detik
+
     const cursorTimer = setTimeout(() => {
       if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
         setShowCursor(true);
       }
-    }, 1500);
+    }, 2500);
 
-    return () => clearTimeout(cursorTimer);
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(cursorTimer);
+    };
   }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <ThemeProvider>
