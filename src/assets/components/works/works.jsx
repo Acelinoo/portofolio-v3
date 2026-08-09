@@ -42,6 +42,22 @@ const projects = [
     image: '/images/laukatme.webp',
     link: 'https://laukatme.vercel.app',
     tech: ['Next.js', 'Tailwind CSS', 'TypeScript'],
+  },
+  {
+    id: 'project-6',
+    title: 'Web Undangan Nikah',
+    description: 'An elegant luxury digital wedding invitation platform featuring personalized guest invitation links, interactive event countdown, music player, digital RSVP, and gift registry.',
+    image: '/images/acelino-undangan-nikah.webp',
+    link: 'https://acelino-undangan-nikah.vercel.app',
+    tech: ['React', 'Tailwind CSS', 'Framer Motion'],
+  },
+  {
+    id: 'project-7',
+    title: 'Acelino Company Profile',
+    description: 'A modern corporate company profile website for logistics & MSME supply chain solutions featuring sleek dark UI design, interactive portfolio showcase, smooth animations, and corporate inquiries.',
+    image: '/images/acelino-company-profile.webp',
+    link: 'https://acelino-company-profile.vercel.app',
+    tech: ['React', 'Tailwind CSS', 'Framer Motion'],
   }
 ];
 
