@@ -1,33 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [animateIn, setAnimateIn] = useState(false);
+  const lastScrollY = useRef(0);
 
-  // Kontrol scroll show/hide
-  const controlSidebar = () => {
-    if (typeof window !== 'undefined') {
-      if (window.scrollY > lastScrollY) {
-        setShowSidebar(false); // scroll down
-      } else {
-        setShowSidebar(true); // scroll up
-      }
-      setLastScrollY(window.scrollY);
-    }
-  };
-
-  // Initial fade-in animasi
   useEffect(() => {
-    window.addEventListener('scroll', controlSidebar);
-    const timeout = setTimeout(() => {
-      setAnimateIn(true);
-    }, 100); // delay animasi 100ms
-    return () => {
-      window.removeEventListener('scroll', controlSidebar);
-      clearTimeout(timeout);
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+            setShowSidebar(false);
+          } else {
+            setShowSidebar(true);
+          }
+          lastScrollY.current = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-  }, [lastScrollY]);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const socialLinks = [
     { href: 'https://github.com/Acelinoo', img: '/images/github.png', alt: 'Github' },
@@ -46,7 +43,7 @@ const Sidebar = () => {
         bg-white rounded-l-2xl shadow-lg py-4 px-2 z-50 
         transition-all duration-700 ease-out
         ${showSidebar ? 'translate-x-0' : 'translate-x-32'}
-        ${animateIn ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-5'}
+        opacity-100 translate-y-0
       `}
     >
       <ul className="flex flex-col items-center space-y-4">

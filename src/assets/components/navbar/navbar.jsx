@@ -4,42 +4,42 @@ import { useTheme } from '../theme/ThemeContext';
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const audioRef = useRef(null);
   const { theme, toggleTheme } = useTheme();
-
-  const controlNavbar = () => {
-    if (window.scrollY > lastScrollY) setShowNavbar(false);
-    else setShowNavbar(true);
-    setLastScrollY(window.scrollY);
-  };
+  const lastScrollY = useRef(0);
 
   const togglePlay = () => {
     const audio = audioRef.current;
     if (!audio) return;
-    isPlaying ? audio.pause() : audio.play();
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
     setIsPlaying(!isPlaying);
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', controlNavbar);
-    const audio = audioRef.current;
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+            setShowNavbar(false);
+          } else {
+            setShowNavbar(true);
+          }
+          lastScrollY.current = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
 
-    // Delay fade-down saat mount
-    const timeout = setTimeout(() => setMounted(true), 100);
-
-    if (audio) {
-      const autoplay = setTimeout(() => {
-        audio.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
-      }, 500);
-      return () => {
-        clearTimeout(autoplay);
-        clearTimeout(timeout);
-        window.removeEventListener('scroll', controlNavbar);
-      };
-    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -51,7 +51,7 @@ const Navbar = () => {
         flex justify-center items-center gap-6 sm:gap-10 z-50
         transition-all duration-700 ease-out
         ${showNavbar ? 'translate-y-0' : '-translate-y-full'}
-        ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-5'}
+        opacity-100 translate-y-0
       `}
     >
       {/* Menu Links */}
@@ -73,7 +73,7 @@ const Navbar = () => {
           className={`w-full h-full ${isPlaying ? 'animate-spin' : ''} dark:invert`}
           style={{ animationDuration: '4s' }}
         />
-        <audio ref={audioRef} src="/music/You.mp3" preload="auto" />
+        <audio ref={audioRef} src="/music/You.mp3" preload="none" />
       </div>
 
       {/* Theme Mode Toggle */}
