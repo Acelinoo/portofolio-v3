@@ -24,14 +24,22 @@ const About = () => {
           <div className="relative w-56 h-72 group cursor-pointer md:mr-8">
             {/* Gambar Bayangan */}
             <img
-              src="/images/me2.png"
+              src="/images/me2.webp"
               alt="Shadow"
+              width="224"
+              height="288"
+              loading="lazy"
+              decoding="async"
               className="w-56 absolute top-4 left-4 opacity-20 dark:opacity-10 transition-all duration-500 group-hover:top-0 group-hover:left-0"
             />
             {/* Gambar Utama */}
             <img
-              src="/images/me2.png"
+              src="/images/me2.webp"
               alt="About"
+              width="224"
+              height="288"
+              loading="lazy"
+              decoding="async"
               className="w-56 relative z-10 transition-transform duration-500 group-hover:scale-105"
             />
           </div>

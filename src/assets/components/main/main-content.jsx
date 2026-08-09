@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const MainContent = () => {
-  const [animateIn, setAnimateIn] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => setAnimateIn(true), 300);
-    return () => clearTimeout(timeout);
-  }, []);
+  const [animateIn, setAnimateIn] = useState(true);
 
   return (
     <div

@@ -15,7 +15,7 @@ const projects = [
     id: 'project-2',
     title: 'Learn With Acel',
     description: 'An interactive learning platform designed for a seamless educational experience, built with modern web technologies.',
-    image: '/images/LWA.png',
+    image: '/images/LWA.webp',
     link: 'https://learnwithacel.vercel.app',
     tech: ['React', 'Tailwind CSS', 'Next.js'],
   },
@@ -23,7 +23,7 @@ const projects = [
     id: 'project-3',
     title: 'GerobakLink',
     description: 'A web design & development studio platform providing digital website solutions for company profiles, online stores, digital invitations, and personal portfolios.',
-    image: '/images/gerobaklink.png',
+    image: '/images/gerobaklink.webp',
     link: 'https://gerobaklink.vercel.app',
     tech: ['React', 'Tailwind CSS', 'JavaScript'],
   },
@@ -31,7 +31,7 @@ const projects = [
     id: 'project-4',
     title: 'Kopi Tenang Jiwa',
     description: 'A serene and modern digital cafe platform for a premium coffee shop. Features curated Nusantara coffee selections, interactive mood-based menu recommendation, and an aesthetic warm interface.',
-    image: '/images/kopitenangjiwa.png',
+    image: '/images/kopitenangjiwa.webp',
     link: 'https://kopitenangjiwa.vercel.app',
     tech: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
   },
@@ -39,7 +39,7 @@ const projects = [
     id: 'project-5',
     title: 'Lauk at Me',
     description: 'An online raw and fresh seafood e-commerce platform featuring custom cut specifications, Pre-Order system, and seamless WhatsApp ordering integration.',
-    image: '/images/laukatme.png',
+    image: '/images/laukatme.webp',
     link: 'https://laukatme.vercel.app',
     tech: ['Next.js', 'Tailwind CSS', 'TypeScript'],
   }
@@ -54,9 +54,7 @@ const ProjectCardMobile = ({ project }) => {
         rel="noopener noreferrer"
         className="group relative z-10 bg-white dark:bg-[#11223A] border border-gray-100 dark:border-gray-800 rounded-3xl overflow-hidden shadow-lg flex flex-col w-full"
       >
-        <div className="absolute inset-0 z-20 opacity-80 transition-opacity duration-700 pointer-events-none overflow-hidden flex justify-center items-center">
-          <ShapeBlur variation={0} pixelRatioProp={1} shapeSize={1.0} roundness={0.25} />
-        </div>
+        <div className="absolute inset-0 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none overflow-hidden bg-gradient-to-tr from-blue-500/10 via-transparent to-cyan-400/10 rounded-3xl" />
         <div className="w-full overflow-hidden h-48 border-b border-gray-100 dark:border-gray-800 relative bg-gray-50 dark:bg-gray-900">
           <img
             src={project.image}
@@ -108,9 +106,7 @@ const ProjectCardDesktop = ({ project, setActiveProject }) => {
         rel="noopener noreferrer"
         className="group relative z-10 bg-white dark:bg-[#11223A] border border-gray-100 dark:border-gray-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col w-full will-change-transform"
       >
-        <div className="absolute inset-0 z-20 opacity-80 transition-opacity duration-700 pointer-events-none overflow-hidden flex justify-center items-center">
-          <ShapeBlur variation={0} pixelRatioProp={1} shapeSize={1.0} roundness={0.25} borderSize={0.05} />
-        </div>
+        <div className="absolute inset-0 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none overflow-hidden bg-gradient-to-tr from-blue-500/10 via-transparent to-cyan-400/10 rounded-3xl" />
         <div className="w-full overflow-hidden h-[240px] border-b border-gray-100 dark:border-gray-800 relative bg-gray-50 dark:bg-gray-900">
           <img
             src={project.image}

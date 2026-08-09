@@ -8,13 +8,23 @@ import { ThemeProvider } from './assets/components/theme/ThemeContext';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [showCursor, setShowCursor] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // waktu loading 2 detik
+    }, 150);
 
-    return () => clearTimeout(timer);
+    const cursorTimer = setTimeout(() => {
+      if (window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
+        setShowCursor(true);
+      }
+    }, 800);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(cursorTimer);
+    };
   }, []);
 
   if (isLoading) {
@@ -23,9 +33,11 @@ const App = () => {
 
   return (
     <ThemeProvider>
-      <div className="fixed inset-0 z-50 pointer-events-none">
-        <SplashCursor COLOR="#969696" RAINBOW_MODE={false} SPLAT_RADIUS={0.1} SPLAT_FORCE={4000} />
-      </div>
+      {showCursor && (
+        <div className="fixed inset-0 z-50 pointer-events-none">
+          <SplashCursor COLOR="#969696" RAINBOW_MODE={false} SPLAT_RADIUS={0.1} SPLAT_FORCE={4000} />
+        </div>
+      )}
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
