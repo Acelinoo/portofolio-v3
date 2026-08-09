@@ -34,6 +34,14 @@ const projects = [
     image: '/images/kopitenangjiwa.png',
     link: 'https://kopitenangjiwa.vercel.app',
     tech: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
+  },
+  {
+    id: 'project-5',
+    title: 'Lauk at Me',
+    description: 'An online raw and fresh seafood e-commerce platform featuring custom cut specifications, Pre-Order system, and seamless WhatsApp ordering integration.',
+    image: '/images/laukatme.png',
+    link: 'https://laukatme.vercel.app',
+    tech: ['Next.js', 'Tailwind CSS', 'TypeScript'],
   }
 ];
 
