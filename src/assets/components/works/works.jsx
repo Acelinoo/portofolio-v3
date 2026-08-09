@@ -48,7 +48,7 @@ const projects = [
     title: 'Web Undangan Nikah',
     description: 'An elegant luxury digital wedding invitation platform featuring personalized guest invitation links, interactive event countdown, music player, digital RSVP, and gift registry.',
     image: '/images/acelino-undangan-nikah.webp',
-    link: 'https://acelino-undangan-nikah.vercel.app',
+    link: 'https://gerobaklink-undangan-nikah.vercel.app',
     tech: ['React', 'Tailwind CSS', 'Framer Motion'],
   },
   {
