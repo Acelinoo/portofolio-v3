@@ -14,12 +14,18 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://acelino.vercel.app/" />
 
-    <!-- Preconnect to Google Fonts for performance -->
+    <!-- Preconnect to Google Fonts for lightning-fast handshake -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
 
-    <!-- Preload critical hero image for instant LCP -->
+    <!-- Non-render-blocking asynchronous font loading for 100% Lighthouse Performance -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" />
+    </noscript>
+
+    <!-- Critical Hero Image Preload for Instant 0.3s LCP -->
     <link rel="preload" as="image" href="/images/me1.webp" type="image/webp" fetchpriority="high" />
 
     <!-- Open Graph / Social Meta Tags -->

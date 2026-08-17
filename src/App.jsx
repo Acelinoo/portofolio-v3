@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Home from "./assets/pages/index";
-import ProjectDetail from "./assets/pages/ProjectDetail";
-import NotFound from "./assets/pages/NotFound";
 import CurveTransition from "./assets/components/animations/CurveTransition";
 import { TransitionProvider } from "./assets/components/animations/TransitionContext";
 import { ThemeProvider } from './assets/components/theme/ThemeContext';
 import SmoothScroll from "./assets/components/scroll/SmoothScroll";
+
+const ProjectDetail = lazy(() => import("./assets/pages/ProjectDetail"));
+const NotFound = lazy(() => import("./assets/pages/NotFound"));
 
 const Layout = () => {
   return (
     <SmoothScroll>
       <TransitionProvider>
         <CurveTransition />
-        <Outlet />
+        <Suspense fallback={<div className="min-h-screen bg-white dark:bg-black" />}>
+          <Outlet />
+        </Suspense>
       </TransitionProvider>
     </SmoothScroll>
   );
