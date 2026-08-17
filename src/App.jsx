@@ -1,49 +1,39 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import React from 'react';
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Home from "./assets/pages/index";
+import ProjectDetail from "./assets/pages/ProjectDetail";
 import NotFound from "./assets/pages/NotFound";
-import Loading from './assets/components/loadingPage/loadingPage';
-import SplashCursor from './assets/components/animations/SplashCursor';
+import CurveTransition from "./assets/components/animations/CurveTransition";
+import { TransitionProvider } from "./assets/components/animations/TransitionContext";
 import { ThemeProvider } from './assets/components/theme/ThemeContext';
+import SmoothScroll from "./assets/components/scroll/SmoothScroll";
+
+const Layout = () => {
+  return (
+    <SmoothScroll>
+      <TransitionProvider>
+        <CurveTransition />
+        <Outlet />
+      </TransitionProvider>
+    </SmoothScroll>
+  );
+};
+
+const router = createBrowserRouter([
+  {
+    element: <Layout />,
+    children: [
+      { path: '/', element: <Home /> },
+      { path: '/works/:slug', element: <ProjectDetail /> },
+      { path: '*', element: <NotFound /> },
+    ],
+  },
+]);
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [showCursor, setShowCursor] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000); // waktu loading 2 detik
-
-    const cursorTimer = setTimeout(() => {
-      if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
-        setShowCursor(true);
-      }
-    }, 2500);
-
-    return () => {
-      clearTimeout(timer);
-      clearTimeout(cursorTimer);
-    };
-  }, []);
-
-  if (isLoading) {
-    return <Loading />;
-  }
-
   return (
     <ThemeProvider>
-      {showCursor && (
-        <div className="fixed inset-0 z-50 pointer-events-none">
-          <SplashCursor COLOR="#969696" RAINBOW_MODE={false} SPLAT_RADIUS={0.1} SPLAT_FORCE={4000} />
-        </div>
-      )}
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
+      <RouterProvider router={router} />
     </ThemeProvider>
   );
 };

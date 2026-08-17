@@ -1,24 +1,40 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import { FiSun, FiMoon } from 'react-icons/fi';
 import { useTheme } from '../theme/ThemeContext';
 
+const navContainerVariants = {
+  hidden: { 
+    y: -80, 
+    opacity: 0,
+    transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+      staggerChildren: 0.05,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const navItemVariants = {
+  hidden: { y: -15, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 const Navbar = () => {
-  const [showNavbar, setShowNavbar] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef(null);
+  const [showNavbar, setShowNavbar] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const lastScrollY = useRef(0);
-
-  const togglePlay = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    if (isPlaying) {
-      audio.pause();
-    } else {
-      audio.play();
-    }
-    setIsPlaying(!isPlaying);
-  };
+  const showNavbarRef = useRef(false);
 
   useEffect(() => {
     let ticking = false;
@@ -26,12 +42,25 @@ const Navbar = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
-          if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-            setShowNavbar(false);
-          } else {
-            setShowNavbar(true);
+          const delta = currentScrollY - lastScrollY.current;
+          
+          if (Math.abs(delta) > 5) {
+            // Muncul HANYA ketika scroll UP dan bukan di paling atas halaman
+            if (delta < 0 && currentScrollY > 100) {
+              if (!showNavbarRef.current) {
+                showNavbarRef.current = true;
+                setShowNavbar(true);
+              }
+            } 
+            // Sembunyi ketika scroll DOWN atau kembali ke paling atas
+            else if (delta > 0 || currentScrollY <= 80) {
+              if (!showNavbarRef.current === false) {
+                showNavbarRef.current = false;
+                setShowNavbar(false);
+              }
+            }
+            lastScrollY.current = currentScrollY;
           }
-          lastScrollY.current = currentScrollY;
           ticking = false;
         });
         ticking = true;
@@ -43,43 +72,31 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav
-      className={`
-        fixed top-1 left-1/2 -translate-x-1/2
-        bg-transparent text-black dark:text-white
-        rounded-[25px] px-5 py-2
-        flex justify-center items-center gap-6 sm:gap-10 z-50
-        transition-all duration-700 ease-out
-        ${showNavbar ? 'translate-y-0' : '-translate-y-full'}
-        opacity-100 translate-y-0
-      `}
+    <motion.nav
+      variants={navContainerVariants}
+      initial="hidden"
+      animate={showNavbar ? 'visible' : 'hidden'}
+      style={{ pointerEvents: showNavbar ? 'auto' : 'none' }}
+      className="fixed top-3 sm:top-4 left-1/2 -translate-x-1/2 bg-transparent text-white mix-blend-difference px-3 sm:px-6 py-2 flex justify-center items-center gap-3.5 sm:gap-6 md:gap-8 z-50 max-w-[96vw] overflow-x-auto no-scrollbar"
     >
       {/* Menu Links */}
-      {['Home', 'About', 'Works', 'Contact'].map((item) => (
-        <a
+      {['Home', 'About', 'Services', 'Journey', 'Works', 'Contact'].map((item) => (
+        <motion.a
           key={item}
+          variants={navItemVariants}
           href={item === 'Home' ? '/' : `#${item.toLowerCase()}`}
-          className="text-sm sm:text-[17px] font-bold uppercase hover:-translate-y-1 transition-all duration-300"
+          className="text-[11px] sm:text-xs md:text-sm font-bold uppercase hover:-translate-y-0.5 transition-all duration-200 inline-block tracking-wider whitespace-nowrap"
         >
           {item}
-        </a>
+        </motion.a>
       ))}
 
-      {/* Music Icon */}
-      <div className="w-6 h-6 cursor-pointer hover:-translate-y-1 transition-transform" onClick={togglePlay} title={isPlaying ? 'Pause' : 'Play'}>
-        <img
-          src="/images/music.png"
-          alt="Music Icon"
-          className={`w-full h-full ${isPlaying ? 'animate-spin' : ''} dark:invert`}
-          style={{ animationDuration: '4s' }}
-        />
-        <audio ref={audioRef} src="/music/You.mp3" preload="none" />
-      </div>
-
-      {/* Theme Mode Toggle */}
-      <button
+      {/* Theme Mode Toggle Button */}
+      <motion.button
+        variants={navItemVariants}
         onClick={toggleTheme}
-        className="text-xl hover:-translate-y-1 transition-all duration-300 relative"
+        className="text-sm sm:text-base md:text-lg hover:-translate-y-0.5 transition-transform relative cursor-pointer flex items-center justify-center p-0 bg-transparent border-0 text-white shrink-0"
+        aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
       >
         {theme === 'dark' ? (
@@ -87,8 +104,8 @@ const Navbar = () => {
         ) : (
           <FiMoon className="transition-transform duration-300" />
         )}
-      </button>
-    </nav>
+      </motion.button>
+    </motion.nav>
   );
 };
 
