@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowUpRight, FiMinus, FiPlus } from 'react-icons/fi';
 import SplitLineReveal from '../animations/SplitLineReveal';
@@ -180,100 +180,18 @@ const categoryBadgeStyles = {
 };
 
 const Journey = () => {
-  const [activeYear, setActiveYear] = useState(null);
-  const sectionRef = useRef(null);
-  const yearRowsRef = useRef({});
-  const isManualClickRef = useRef(false);
-  const manualTimeoutRef = useRef(null);
-
-  // Dynamic real-time proximity detection on scroll: Never skips any year despite dynamic height shifts
-  useEffect(() => {
-    let ticking = false;
-
-    const checkActiveYearOnScroll = () => {
-      if (isManualClickRef.current) return;
-
-      const section = sectionRef.current;
-      if (!section) return;
-
-      const sectionRect = section.getBoundingClientRect();
-      const vh = window.innerHeight;
-
-      // When outside the Journey section, close all dropdowns
-      if (sectionRect.bottom < vh * 0.15 || sectionRect.top > vh * 0.85) {
-        setActiveYear((current) => (current !== null ? null : current));
-        return;
-      }
-
-      // Detection focal line in viewport
-      const focalLine = vh * 0.5;
-      let closestYear = null;
-      let minDistance = Infinity;
-
-      journeyData.forEach((period) => {
-        const rowEl = yearRowsRef.current[period.year];
-        if (!rowEl) return;
-
-        const rect = rowEl.getBoundingClientRect();
-        // Calculate distance between the row header and focal line
-        const distance = Math.abs(rect.top + 40 - focalLine);
-
-        // Check if row is within the active viewport window
-        if (rect.top <= vh * 0.75 && rect.bottom >= vh * 0.2) {
-          if (distance < minDistance) {
-            minDistance = distance;
-            closestYear = period.year;
-          }
-        }
-      });
-
-      if (closestYear) {
-        setActiveYear((current) => (current !== closestYear ? closestYear : current));
-      }
-    };
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          checkActiveYearOnScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    if (window.__lenis) {
-      window.__lenis.on('scroll', handleScroll);
-    }
-
-    // Initial check on mount
-    setTimeout(checkActiveYearOnScroll, 100);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (window.__lenis) {
-        window.__lenis.off('scroll', handleScroll);
-      }
-      if (manualTimeoutRef.current) {
-        clearTimeout(manualTimeoutRef.current);
-      }
-    };
-  }, []);
+  const [activeYear, setActiveYear] = useState('2021');
 
   const toggleYear = (year) => {
-    isManualClickRef.current = true;
     setActiveYear((prev) => (prev === year ? null : year));
+  };
 
-    if (manualTimeoutRef.current) clearTimeout(manualTimeoutRef.current);
-    manualTimeoutRef.current = setTimeout(() => {
-      isManualClickRef.current = false;
-    }, 1200);
+  const handleMouseEnter = (year) => {
+    setActiveYear(year);
   };
 
   return (
     <section
-      ref={sectionRef}
       id="journey"
       className="py-20 md:py-28 px-4 sm:px-6 md:px-10 lg:px-16 bg-white dark:bg-black text-gray-900 dark:text-white transition-colors duration-300 w-full overflow-hidden"
     >
@@ -303,7 +221,7 @@ const Journey = () => {
           </div>
         </div>
 
-        {/* Interactive Timeline Rail */}
+        {/* Interactive Timeline Rail with Cursor Hover Auto-Opening */}
         <div className="border-y border-gray-200 dark:border-gray-800 divide-y divide-gray-200 dark:divide-gray-800">
           {journeyData.map((period) => {
             const isOpen = activeYear === period.year;
@@ -311,14 +229,14 @@ const Journey = () => {
             return (
               <div
                 key={period.id}
-                ref={(el) => (yearRowsRef.current[period.year] = el)}
+                onMouseEnter={() => handleMouseEnter(period.year)}
                 className={`transition-colors duration-300 ${
                   isOpen
                     ? 'bg-gray-50/60 dark:bg-gray-900/40'
                     : 'bg-transparent hover:bg-gray-50/20 dark:hover:bg-gray-900/20'
                 }`}
               >
-                {/* Clickable Header Row */}
+                {/* Clickable & Hoverable Header Row */}
                 <button
                   type="button"
                   onClick={() => toggleYear(period.year)}
