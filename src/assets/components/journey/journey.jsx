@@ -1,11 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowUpRight, FiMinus, FiPlus } from 'react-icons/fi';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitLineReveal from '../animations/SplitLineReveal';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const journeyData = [
   {
@@ -187,42 +183,92 @@ const Journey = () => {
   const [activeYear, setActiveYear] = useState(null);
   const sectionRef = useRef(null);
   const yearRowsRef = useRef({});
+  const isManualClickRef = useRef(false);
+  const manualTimeoutRef = useRef(null);
 
-  // ScrollTrigger: Automatically open 1 by 1 on scroll, close previous when moving to next year
+  // Dynamic real-time proximity detection on scroll: Never skips any year despite dynamic height shifts
   useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
+    let ticking = false;
 
-    const ctx = gsap.context(() => {
-      // Create ScrollTrigger for each year row
+    const checkActiveYearOnScroll = () => {
+      if (isManualClickRef.current) return;
+
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const sectionRect = section.getBoundingClientRect();
+      const vh = window.innerHeight;
+
+      // When outside the Journey section, close all dropdowns
+      if (sectionRect.bottom < vh * 0.15 || sectionRect.top > vh * 0.85) {
+        setActiveYear((current) => (current !== null ? null : current));
+        return;
+      }
+
+      // Detection focal line in viewport
+      const focalLine = vh * 0.5;
+      let closestYear = null;
+      let minDistance = Infinity;
+
       journeyData.forEach((period) => {
         const rowEl = yearRowsRef.current[period.year];
         if (!rowEl) return;
 
-        ScrollTrigger.create({
-          trigger: rowEl,
-          start: 'top 55%',
-          end: 'bottom 45%',
-          onEnter: () => setActiveYear(period.year),
-          onEnterBack: () => setActiveYear(period.year),
+        const rect = rowEl.getBoundingClientRect();
+        // Calculate distance between the row header and focal line
+        const distance = Math.abs(rect.top + 40 - focalLine);
+
+        // Check if row is within the active viewport window
+        if (rect.top <= vh * 0.75 && rect.bottom >= vh * 0.2) {
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestYear = period.year;
+          }
+        }
+      });
+
+      if (closestYear) {
+        setActiveYear((current) => (current !== closestYear ? closestYear : current));
+      }
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          checkActiveYearOnScroll();
+          ticking = false;
         });
-      });
+        ticking = true;
+      }
+    };
 
-      // Close all when completely above or below the Journey section
-      ScrollTrigger.create({
-        trigger: section,
-        start: 'top 85%',
-        end: 'bottom 15%',
-        onLeave: () => setActiveYear(null),
-        onLeaveBack: () => setActiveYear(null),
-      });
-    }, section);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    if (window.__lenis) {
+      window.__lenis.on('scroll', handleScroll);
+    }
 
-    return () => ctx.revert();
+    // Initial check on mount
+    setTimeout(checkActiveYearOnScroll, 100);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (window.__lenis) {
+        window.__lenis.off('scroll', handleScroll);
+      }
+      if (manualTimeoutRef.current) {
+        clearTimeout(manualTimeoutRef.current);
+      }
+    };
   }, []);
 
   const toggleYear = (year) => {
+    isManualClickRef.current = true;
     setActiveYear((prev) => (prev === year ? null : year));
+
+    if (manualTimeoutRef.current) clearTimeout(manualTimeoutRef.current);
+    manualTimeoutRef.current = setTimeout(() => {
+      isManualClickRef.current = false;
+    }, 1200);
   };
 
   return (
