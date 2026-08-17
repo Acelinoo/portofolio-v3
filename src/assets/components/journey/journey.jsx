@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowUpRight, FiMinus, FiPlus } from 'react-icons/fi';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitLineReveal from '../animations/SplitLineReveal';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const journeyData = [
   {
@@ -180,7 +184,42 @@ const categoryBadgeStyles = {
 };
 
 const Journey = () => {
-  const [activeYear, setActiveYear] = useState('2021');
+  const [activeYear, setActiveYear] = useState(null);
+  const sectionRef = useRef(null);
+  const yearRowsRef = useRef({});
+
+  // ScrollTrigger: Automatically open 1 by 1 on scroll, close previous when moving to next year
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const ctx = gsap.context(() => {
+      // Create ScrollTrigger for each year row
+      journeyData.forEach((period) => {
+        const rowEl = yearRowsRef.current[period.year];
+        if (!rowEl) return;
+
+        ScrollTrigger.create({
+          trigger: rowEl,
+          start: 'top 55%',
+          end: 'bottom 45%',
+          onEnter: () => setActiveYear(period.year),
+          onEnterBack: () => setActiveYear(period.year),
+        });
+      });
+
+      // Close all when completely above or below the Journey section
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top 85%',
+        end: 'bottom 15%',
+        onLeave: () => setActiveYear(null),
+        onLeaveBack: () => setActiveYear(null),
+      });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
 
   const toggleYear = (year) => {
     setActiveYear((prev) => (prev === year ? null : year));
@@ -188,6 +227,7 @@ const Journey = () => {
 
   return (
     <section
+      ref={sectionRef}
       id="journey"
       className="py-20 md:py-28 px-4 sm:px-6 md:px-10 lg:px-16 bg-white dark:bg-black text-gray-900 dark:text-white transition-colors duration-300 w-full overflow-hidden"
     >
@@ -225,9 +265,10 @@ const Journey = () => {
             return (
               <div
                 key={period.id}
+                ref={(el) => (yearRowsRef.current[period.year] = el)}
                 className={`transition-colors duration-300 ${
                   isOpen
-                    ? 'bg-gray-50/40 dark:bg-gray-900/30'
+                    ? 'bg-gray-50/60 dark:bg-gray-900/40'
                     : 'bg-transparent hover:bg-gray-50/20 dark:hover:bg-gray-900/20'
                 }`}
               >
