@@ -89,13 +89,12 @@ const Navbar = () => {
   const primaryLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/#about' },
-    { name: 'Services', href: '/#services' },
     { name: 'Journey', href: '/#journey' },
+    { name: 'Works', href: '/#works' },
   ];
 
   // Secondary links (Visible in dropdown on mobile, inline on desktop)
   const secondaryLinks = [
-    { name: 'Works', href: '/#works' },
     { name: 'Contact', href: '/#contact' },
   ];
 

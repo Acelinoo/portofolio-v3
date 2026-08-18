@@ -186,10 +186,6 @@ const Journey = () => {
     setActiveYear((prev) => (prev === year ? null : year));
   };
 
-  const handleMouseEnter = (year) => {
-    setActiveYear(year);
-  };
-
   return (
     <section
       id="journey"
@@ -221,7 +217,7 @@ const Journey = () => {
           </div>
         </div>
 
-        {/* Interactive Timeline Rail with Cursor Hover Auto-Opening */}
+        {/* Interactive Timeline Rail with Manual Click Opening */}
         <div className="border-y border-gray-200 dark:border-gray-800 divide-y divide-gray-200 dark:divide-gray-800">
           {journeyData.map((period) => {
             const isOpen = activeYear === period.year;
@@ -229,14 +225,13 @@ const Journey = () => {
             return (
               <div
                 key={period.id}
-                onMouseEnter={() => handleMouseEnter(period.year)}
                 className={`transition-colors duration-300 ${
                   isOpen
                     ? 'bg-gray-50/60 dark:bg-gray-900/40'
                     : 'bg-transparent hover:bg-gray-50/20 dark:hover:bg-gray-900/20'
                 }`}
               >
-                {/* Clickable & Hoverable Header Row */}
+                {/* Clickable Header Row */}
                 <button
                   type="button"
                   onClick={() => toggleYear(period.year)}

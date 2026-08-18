@@ -151,13 +151,13 @@ const ProjectDetail = () => {
             </span>
           </div>
 
-          {/* Year */}
+          {/* Timeline / Started */}
           <div>
             <span className="text-gray-400 uppercase tracking-widest block mb-1 text-[11px]">
-              YEAR
+              TIMELINE
             </span>
             <span className="font-semibold text-gray-900 dark:text-white">
-              {project.year}
+              {project.timeline || (project.started ? `Started ${project.started}` : project.year)}
             </span>
           </div>
 

@@ -10,7 +10,6 @@ import Navbar from '../components/navbar/navbar';
 import Sidebar from '../components/sidebar/sidebar';
 import Works from '../components/works/works';
 import Skills from '../components/skills/skills';
-import Services from '../components/services/services';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -123,10 +122,7 @@ const Home = () => {
           <Skills />
         </section>
 
-        {/* Layer 3: Services & Capabilities */}
-        <Services />
-
-        {/* Layer 4: Journey (Education, Experience & Programs 2021-2026) */}
+        {/* Layer 3: Journey (Education, Experience & Programs 2021-2026) */}
         <Journey />
 
         {/* Layer 5: Works Section (Pinned underneath with Overscroll) */}
