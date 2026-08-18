@@ -6,6 +6,7 @@ import { TransitionProvider } from "./assets/components/animations/TransitionCon
 import { ThemeProvider } from './assets/components/theme/ThemeContext';
 import SmoothScroll from "./assets/components/scroll/SmoothScroll";
 
+const WorksPage = lazy(() => import("./assets/pages/WorksPage"));
 const ProjectDetail = lazy(() => import("./assets/pages/ProjectDetail"));
 const NotFound = lazy(() => import("./assets/pages/NotFound"));
 
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: '/', element: <Home /> },
+      { path: '/works', element: <WorksPage /> },
       { path: '/works/:slug', element: <ProjectDetail /> },
       { path: '*', element: <NotFound /> },
     ],

@@ -88,15 +88,15 @@ const Navbar = () => {
   // Primary 4 links visible everywhere (Mobile + Desktop)
   const primaryLinks = [
     { name: 'Home', href: '/' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Journey', href: '#journey' },
+    { name: 'About', href: '/#about' },
+    { name: 'Services', href: '/#services' },
+    { name: 'Journey', href: '/#journey' },
   ];
 
   // Secondary links (Visible in dropdown on mobile, inline on desktop)
   const secondaryLinks = [
-    { name: 'Works', href: '#works' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Works', href: '/#works' },
+    { name: 'Contact', href: '/#contact' },
   ];
 
   return (

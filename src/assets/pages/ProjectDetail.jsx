@@ -53,8 +53,7 @@ const ProjectDetail = () => {
 
   const handleBackToWorks = (e) => {
     e.preventDefault();
-    sessionStorage.setItem('return_to_works', 'true');
-    navigateWithTransition('/#works');
+    navigateWithTransition('/works');
   };
 
   const handleNavigateProject = (e, targetSlug) => {
@@ -69,7 +68,7 @@ const ProjectDetail = () => {
       <header className="sticky top-0 z-50 w-full bg-white/90 dark:bg-black/90 backdrop-blur-md border-b border-gray-100 dark:border-gray-900 px-4 sm:px-6 md:px-12 lg:px-20 py-4 transition-colors">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <a
-            href="/#works"
+            href="/works"
             onClick={handleBackToWorks}
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono uppercase tracking-widest text-gray-900 dark:text-white hover:opacity-60 transition-opacity cursor-pointer"
           >
