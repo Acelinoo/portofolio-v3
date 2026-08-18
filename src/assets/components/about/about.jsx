@@ -89,16 +89,16 @@ const About = () => {
             as="h2"
             className="text-2xl sm:text-3xl md:text-4xl lg:text-[38px] xl:text-[42px] font-normal leading-[1.3] md:leading-[1.25] tracking-tight text-white font-sans mb-6"
           >
-            I'm Marchelino Kurniawan, a Full-Stack Web Developer &amp; Frontend Specialist based in Bandung, Indonesia.
+            I'm Marchelino Kurniawan (Acelino) — Founder &amp; Full-Stack Web Developer specialized in Frontend Development based in Bandung, Indonesia.
           </SplitLineReveal>
 
           {/* Long Narrative Paragraphs */}
           <div className="space-y-4 text-sm sm:text-base md:text-lg leading-relaxed text-gray-300 font-sans font-normal max-w-2xl mb-8">
             <SplitLineReveal delay={0.1}>
-              I am the Founder of GerobakLink, a website development venture founded together with my close colleague. In our collaborative workflow, I lead the Frontend Specialization, user experience design, and interactive interfaces, while my partner leads the specialized backend systems.
+              Acelino (Marchelino Kurniawan) adalah Founder GerobakLink dan Full-Stack Web Developer yang berfokus pada pengembangan aplikasi web modern, pengalaman visual interaktif (UI/UX), dan arsitektur frontend berperforma tinggi.
             </SplitLineReveal>
             <SplitLineReveal delay={0.2}>
-              Independently, I am also fully capable of engineering complete Full-Stack web applications—bridging the gap between robust server architectures and high-converting, lightning-fast user interfaces.
+              Together with my colleague at GerobakLink, I lead the Frontend Specialization and user experience design, while independently engineering complete Full-Stack web applications—bridging robust server architectures with ultra-fast, high-converting digital products.
             </SplitLineReveal>
           </div>
 
@@ -137,7 +137,7 @@ const About = () => {
             />
             <img
               src="/images/me3.webp"
-              alt="Marchelino Kurniawan"
+              alt="Acelino (Marchelino Kurniawan) - Web Developer"
               width="320"
               height="400"
               loading="lazy"
