@@ -65,7 +65,7 @@ const MainContent = () => {
           height="288"
           fetchpriority="high"
           decoding="sync"
-          className="absolute top-3 left-3 opacity-20 dark:opacity-10 w-full h-full object-cover transition-all duration-500 group-hover:top-0 group-hover:left-0 pointer-events-none"
+          className="absolute top-3 left-3 opacity-20 dark:opacity-10 w-full transition-all duration-500 group-hover:top-0 group-hover:left-0 pointer-events-none"
         />
         <img
           src="/images/me1.webp"
@@ -74,7 +74,7 @@ const MainContent = () => {
           height="288"
           fetchpriority="high"
           decoding="sync"
-          className="relative z-10 w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+          className="relative z-10 w-full transition-all duration-500 group-hover:scale-105"
         />
       </motion.div>
     </div>
