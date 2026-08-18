@@ -6,24 +6,6 @@ const MainContent = () => {
     <div className="flex flex-col-reverse md:flex-row items-center justify-center min-h-screen px-6 md:px-8 text-center md:text-left relative overflow-hidden pt-24 md:pt-0 pb-16 md:pb-0">
       {/* Konten Teks */}
       <div className="mt-8 md:mt-0 md:mr-12 z-10">
-        {/* Eyebrow / Brand Alias */}
-        <div className="overflow-hidden mb-2">
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center justify-center md:justify-start gap-2"
-          >
-            <span className="text-xs font-mono font-bold tracking-[0.25em] text-gray-500 dark:text-gray-400 uppercase">
-              ACELINO
-            </span>
-            <span className="h-[1px] w-4 bg-gray-400 dark:bg-gray-600 inline-block" />
-            <span className="text-[11px] font-mono tracking-widest text-gray-400 uppercase">
-              PORTFOLIO
-            </span>
-          </motion.div>
-        </div>
-
         {/* Teks Nama dengan Masked Slide-Up */}
         <div className="overflow-hidden">
           <motion.h1

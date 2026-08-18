@@ -95,7 +95,7 @@ const About = () => {
           {/* Long Narrative Paragraphs */}
           <div className="space-y-4 text-sm sm:text-base md:text-lg leading-relaxed text-gray-300 font-sans font-normal max-w-2xl mb-8">
             <SplitLineReveal delay={0.1}>
-              Acelino (Marchelino Kurniawan) adalah Founder GerobakLink dan Full-Stack Web Developer yang berfokus pada pengembangan aplikasi web modern, pengalaman visual interaktif (UI/UX), dan arsitektur frontend berperforma tinggi.
+              Acelino (Marchelino Kurniawan) is the Founder of GerobakLink and a Full-Stack Web Developer specializing in modern web applications, interactive visual experiences (UI/UX), and high-performance frontend architectures.
             </SplitLineReveal>
             <SplitLineReveal delay={0.2}>
               Together with my colleague at GerobakLink, I lead the Frontend Specialization and user experience design, while independently engineering complete Full-Stack web applications—bridging robust server architectures with ultra-fast, high-converting digital products.
