@@ -74,25 +74,17 @@ const Home = () => {
         anticipatePin: 1,
       });
 
-      // Layered Pinning from Selected Works to Contact
-      ScrollTrigger.create({
-        trigger: '#works-container',
-        start: 'bottom bottom',
-        endTrigger: '#contact-container',
-        end: 'top top',
-        pin: true,
-        pinSpacing: false,
-      });
-
+      // Layered depth transition from Selected Works to Contact
+      // Contact slides up smoothly over Works (z-20 over z-10) while Works subtly recedes
       gsap.to('#works-inner', {
-        scale: 0.94,
-        opacity: 0.4,
-        y: -30,
+        scale: 0.95,
+        opacity: 0.35,
+        y: -40,
         ease: 'none',
         scrollTrigger: {
           trigger: '#contact-container',
           start: 'top bottom',
-          end: 'top top',
+          end: 'top 20%',
           scrub: true,
         },
       });
