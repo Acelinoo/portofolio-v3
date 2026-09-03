@@ -127,7 +127,6 @@ const Contact = () => {
                       className="inline-flex items-center gap-1.5 text-gray-900 dark:text-white hover:opacity-60 transition-opacity"
                     >
                       <span>{item.name}</span>
-                      <span className="text-xs opacity-70">↗</span>
                     </a>
                   </li>
                 ))}
@@ -226,9 +225,7 @@ const Contact = () => {
                         <span>MESSAGE SENT!</span>
                       </motion.div>
                     ) : (
-                      <span className="flex items-center gap-1.5">
-                        SEND MESSAGE <span>↗</span>
-                      </span>
+                      <span>SEND MESSAGE</span>
                     )}
                   </AnimatePresence>
                 </button>

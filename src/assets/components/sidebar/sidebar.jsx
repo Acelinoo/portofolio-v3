@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { FaGithub, FaInstagram, FaTiktok, FaSpotify } from 'react-icons/fa6';
 
 const sidebarContainerVariants = {
   hidden: { 
@@ -52,7 +53,7 @@ const Sidebar = () => {
             } 
             // Sembunyi ketika scroll DOWN atau kembali ke paling atas
             else if (delta > 0 || currentScrollY <= 80) {
-              if (!showSidebarRef.current === false) {
+              if (showSidebarRef.current) {
                 showSidebarRef.current = false;
                 setShowSidebar(false);
               }
@@ -70,10 +71,10 @@ const Sidebar = () => {
   }, []);
 
   const socialLinks = [
-    { href: 'https://github.com/Acelinoo', img: '/images/github.png', alt: 'GitHub Profile of Marchelino' },
-    { href: 'https://www.instagram.com/acelino/', img: '/images/instagram.png', alt: 'Instagram Profile of Marchelino' },
-    { href: 'https://www.tiktok.com/@acelino.k', img: '/images/tiktok.png', alt: 'TikTok Profile of Marchelino' },
-    { href: 'https://open.spotify.com/playlist/29cax5tGOyot4CIkeeeUNO?si=CQggO0GjQLyHoMtiisuQOA', img: '/images/spotify.png', alt: 'Spotify Playlist of Marchelino' },
+    { href: 'https://github.com/Acelinoo', icon: FaGithub, name: 'GitHub', alt: 'GitHub Profile of Marchelino' },
+    { href: 'https://www.instagram.com/acelino/', icon: FaInstagram, name: 'Instagram', alt: 'Instagram Profile of Marchelino' },
+    { href: 'https://www.tiktok.com/@acelino.k', icon: FaTiktok, name: 'TikTok', alt: 'TikTok Profile of Marchelino' },
+    { href: 'https://open.spotify.com/playlist/29cax5tGOyot4CIkeeeUNO?si=CQggO0GjQLyHoMtiisuQOA', icon: FaSpotify, name: 'Spotify', alt: 'Spotify Playlist of Marchelino' },
   ];
 
   return (
@@ -82,33 +83,30 @@ const Sidebar = () => {
       initial="hidden"
       animate={showSidebar ? 'visible' : 'hidden'}
       style={{ pointerEvents: showSidebar ? 'auto' : 'none' }}
-      className="hidden lg:block fixed right-0 md:right-2 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-800/90 rounded-l-2xl shadow-lg py-4 px-2 z-50 transition-colors duration-300 backdrop-blur-sm"
+      className="hidden lg:block fixed right-0 md:right-2 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-black/90 border border-gray-200 dark:border-gray-800 rounded-l-2xl shadow-2xl py-4 px-2.5 z-50 transition-colors duration-300 backdrop-blur-md"
     >
-      <ul className="flex flex-col items-center space-y-4">
-        {socialLinks.map((link, i) => (
-          <motion.li key={i} variants={sidebarItemVariants}>
-            <a
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-              aria-label={link.alt}
-            >
-              <img
-                src={link.img}
-                alt={link.alt}
-                width="28"
-                height="28"
-                className="w-7 h-7 object-contain hover:scale-125 transition-all duration-300 dark:brightness-110"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          </motion.li>
-        ))}
+      <ul className="flex flex-col items-center space-y-3.5">
+        {socialLinks.map((link, i) => {
+          const Icon = link.icon;
+          return (
+            <motion.li key={i} variants={sidebarItemVariants}>
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 flex items-center justify-center rounded-xl text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-neutral-800/80 transition-all duration-200 hover:scale-115"
+                aria-label={link.alt}
+                title={link.name}
+              >
+                <Icon className="w-5 h-5" />
+              </a>
+            </motion.li>
+          );
+        })}
       </ul>
     </motion.div>
   );
 };
 
 export default Sidebar;
+

@@ -254,4 +254,67 @@ export const projectsData = [
       'Fully responsive, accessible design across all screen sizes',
     ],
   },
+  {
+    id: 'project-9',
+    slug: 'bokis-soreang',
+    number: '09',
+    title: 'Bokis Soreang',
+    category: 'LANDING PAGE',
+    client: 'Bokis Cake & Treats Soreang',
+    role: 'Frontend Specialist & UI Designer',
+    started: 'January 2025',
+    timeline: 'January 2025 – Present',
+    year: '2025 – 2026',
+    stack: ['Next.js', 'Tailwind CSS', 'TypeScript', 'Framer Motion', 'Lucide Icons'],
+    tech: ['Next.js', 'Tailwind CSS', 'TypeScript', 'Framer Motion', 'Lucide Icons'],
+    live: 'https://bokis-soreang.vercel.app',
+    image: '/images/bokis-soreang.webp',
+    description:
+      'A vibrant F&B digital platform for a premium bakery in Soreang, Bandung, featuring interactive product showcases, dynamic categories, and WhatsApp-integrated ordering.',
+    brief: [
+      'Artisanal bakery brands require an appetizing visual identity and digital ordering flow that converts casual browsing into direct sales. Local bakeries often struggle with static social menus that do not reflect freshness or product craftsmanship.',
+      'Bokis Soreang was crafted to deliver an immersive bakery storefront experience. Featuring warm culinary tones, high-definition dessert showcases, bilingual localization (ID/EN), and seamless WhatsApp cart dispatching, the platform establishes an authentic brand presence in South Bandung.',
+    ],
+    challenge: [
+      'Translating tactile pastry appeal into rich web interactions while maintaining snappy mobile performance, smooth fluid animations, and a friction-free ordering pathway.',
+    ],
+    features: [
+      'Dynamic product showcase with multi-category filtering (Pastry, Chiffon, Donat, etc.)',
+      'Direct WhatsApp cart payload integration for streamlined ordering',
+      'Bilingual interface toggle (Bahasa Indonesia & English)',
+      'High-performance mobile-first responsive architecture',
+    ],
+  },
+  {
+    id: 'project-10',
+    slug: 'belajarinaja',
+    number: '10',
+    title: 'BelajarinAja',
+    category: 'WEB APP',
+    client: 'BelajarinAja (Personal / EdTech Project)',
+    role: 'Founder & Full-Stack Web Developer',
+    started: 'February 2025',
+    timeline: 'February 2025 – Present',
+    year: '2025 – 2026',
+    stack: ['Next.js 15', 'React', 'Tailwind CSS', 'TypeScript', 'Prisma', 'PostgreSQL'],
+    tech: ['Next.js 15', 'React', 'Tailwind CSS', 'TypeScript', 'Prisma', 'PostgreSQL'],
+    live: 'https://belajarinaja.vercel.app',
+    image: '/images/belajarinaja.webp',
+    description:
+      'A structured 20-stage web development curriculum platform for beginners, featuring interactive browser coding sandboxes, real-time evaluations, and roadmap progression.',
+    brief: [
+      'Self-taught developers and coding beginners often encounter steep learning curves, tutorial fatigue, and fragmented documentation when trying to enter modern web development.',
+      'BelajarinAja was architected by Marchelino as an end-to-end, zero-friction EdTech platform. Featuring a 20-stage structured curriculum from internet fundamentals to full-stack React and Next.js 15, students write real code in interactive browser sandboxes with automated evaluation engines and verifiable graduation credentials.',
+    ],
+    challenge: [
+      'Architecting an in-browser live evaluation sandbox for HTML, CSS, and JavaScript with zero backend execution latency, while implementing persistent client-side progress synchronization across multiple theme environments.',
+    ],
+    features: [
+      'Structured 20-stage progressive web development curriculum',
+      'In-browser interactive coding sandbox with live evaluation engine',
+      'Dynamic roadmap, glossaries, and verified certificate generation',
+      'Multi-theme support (Editorial Light, Focus Dark, Interactive Warm)',
+    ],
+  },
 ];
+
