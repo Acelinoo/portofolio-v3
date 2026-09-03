@@ -1,8 +1,8 @@
 export const featuredProjectSlugs = [
   'gerobaklink',
-  'kopi-tenang-jiwa',
+  'kopimage',
   'lauk-at-me',
-  'saudarajayamotor',
+  'bokis-soreang',
 ];
 
 export const projectsData = [
@@ -314,6 +314,37 @@ export const projectsData = [
       'In-browser interactive coding sandbox with live evaluation engine',
       'Dynamic roadmap, glossaries, and verified certificate generation',
       'Multi-theme support (Editorial Light, Focus Dark, Interactive Warm)',
+    ],
+  },
+  {
+    id: 'project-11',
+    slug: 'kopimage',
+    number: '11',
+    title: 'KOPIMAGE',
+    category: 'LANDING PAGE',
+    client: 'KOPIMAGE (Gading Tutuka & Lanud Sulaiman)',
+    role: 'Frontend Specialist & UI Designer',
+    started: 'March 2025',
+    timeline: 'March 2025 – Present',
+    year: '2025 – 2026',
+    stack: ['Next.js', 'Tailwind CSS', 'TypeScript', 'Framer Motion', 'Lucide Icons'],
+    tech: ['Next.js', 'Tailwind CSS', 'TypeScript', 'Framer Motion', 'Lucide Icons'],
+    live: 'https://kopimage.vercel.app',
+    image: '/images/kopimage.webp',
+    description:
+      'A warm industrial-concept coffee space & roastery landing page for 2 official branches in Soreang & Margahayu, featuring table QR ordering and live event discovery.',
+    brief: [
+      'Modern coffee spaces are community hubs that require an expressive digital brand identity beyond static paper menus. Customers need fast access to signature roasts, live music schedules, ambient photography, and frictionless table QR ordering.',
+      'KOPIMAGE was designed to reflect the venue’s warm industrial aesthetic (crimson red & raw textures). It offers interactive menu showcases, weekend live music schedules, 3D moment galleries, and an intuitive 4-step table QR ordering guide that streamlines customer flow across both Gading Tutuka and Lanud Sulaiman branches.',
+    ],
+    challenge: [
+      'Translating the tactile atmosphere of warm industrial architecture and live music energy into an interactive editorial web experience while ensuring rapid asset loading across mobile networks.',
+    ],
+    features: [
+      'Rich editorial typography and industrial visual storytelling',
+      'Table QR service ordering flow (Duduk, Scan, Pilih, Nikmati)',
+      'Dual-branch facility guide (Gading Tutuka Soreang & Lanud Sulaiman)',
+      'Live music event schedules and interactive 3D customer moments gallery',
     ],
   },
 ];
