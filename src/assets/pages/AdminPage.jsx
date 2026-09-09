@@ -638,11 +638,11 @@ const AdminPage = () => {
                     key={project.slug}
                     className="relative group border border-gray-300 dark:border-gray-700 bg-white dark:bg-black p-3 flex flex-col justify-between"
                   >
-                    <div className="relative aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-neutral-900 mb-3">
+                    <div className="relative aspect-[1024/520] overflow-hidden bg-gray-100 dark:bg-neutral-900 mb-3">
                       <img
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                       <div className="absolute top-2 left-2 px-2 py-0.5 bg-black/80 text-amber-400 font-mono text-[10px] font-bold uppercase tracking-wider border border-amber-500/40 flex items-center gap-1">
                         <FiStar className="w-2.5 h-2.5 fill-current" />

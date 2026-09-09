@@ -140,21 +140,21 @@ const WorksPage = () => {
                 transition={{ duration: 0.35, ease: 'easeOut' }}
                 className="group flex flex-col justify-between"
               >
-                {/* 16:10 Landscape Screenshot Container */}
+                {/* Screenshot Container matching exact 1024x520 viewport */}
                 <a
                   href={`/works/${project.slug}`}
                   onClick={(e) => handleProjectClick(e, project.slug)}
                   aria-label={`View case study for ${project.title}`}
-                  className="relative w-full aspect-[16/10] overflow-hidden border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-black block mb-4 sm:mb-5 cursor-pointer"
+                  className="relative w-full aspect-[1024/520] overflow-hidden border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-black block mb-4 sm:mb-5 cursor-pointer"
                 >
                   <img
                     src={project.image}
                     alt={`Screenshot of ${project.title}`}
-                    width="800"
-                    height="500"
+                    width="1024"
+                    height="520"
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 will-change-transform"
+                    className="w-full h-full object-contain group-hover:scale-[1.02] transition-transform duration-500 will-change-transform"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                 </a>

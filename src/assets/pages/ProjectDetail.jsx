@@ -193,15 +193,15 @@ const ProjectDetail = () => {
         </div>
 
         {/* Full-Width Preview Showcase Mockup */}
-        <div className="w-full aspect-[16/10] sm:aspect-[16/9] border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-neutral-950 overflow-hidden mb-16 sm:mb-24 shadow-sm">
+        <div className="w-full aspect-[1024/520] border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-neutral-950 overflow-hidden mb-16 sm:mb-24 shadow-sm">
           <img
             src={project.image}
             alt={`${project.title} Interface Showcase`}
-            width="1400"
-            height="875"
+            width="1024"
+            height="520"
             loading="eager"
             decoding="async"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
           />
         </div>
 
