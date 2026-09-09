@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowUpRight, FiArrowLeft, FiSun, FiMoon } from 'react-icons/fi';
-import { projectsData } from '../../data/projectsData';
+import { useProjects } from '../../context/ProjectsContext';
 import { useTransitionNavigate } from '../components/animations/TransitionContext';
 import { useTheme } from '../components/theme/ThemeContext';
 import SplitLineReveal from '../components/animations/SplitLineReveal';
@@ -14,6 +14,7 @@ const WorksPage = () => {
   const [activeFilter, setActiveFilter] = useState('ALL');
   const navigateWithTransition = useTransitionNavigate();
   const { theme, toggleTheme } = useTheme();
+  const { projects } = useProjects();
 
   // Scroll to top on mount
   useEffect(() => {
@@ -25,8 +26,8 @@ const WorksPage = () => {
 
   const filteredProjects =
     activeFilter === 'ALL'
-      ? projectsData
-      : projectsData.filter((project) => project.category === activeFilter);
+      ? projects
+      : projects.filter((project) => project.category === activeFilter);
 
   const handleProjectClick = (e, slug) => {
     e.preventDefault();
@@ -56,7 +57,7 @@ const WorksPage = () => {
 
           <div className="flex items-center gap-4">
             <span className="font-mono text-xs text-gray-400 uppercase tracking-widest hidden sm:inline-block">
-              {projectsData.length} TOTAL PROJECTS
+              {projects.length} TOTAL PROJECTS
             </span>
 
             <button
@@ -77,7 +78,7 @@ const WorksPage = () => {
         <div className="mb-12 sm:mb-16 md:mb-20">
           <div className="flex items-center gap-3 mb-4 sm:mb-6">
             <span className="text-xs sm:text-sm font-mono tracking-widest text-gray-400 uppercase font-semibold">
-              (ALL WORKS ARCHIVE — {projectsData.length} WORKS)
+              (ALL WORKS ARCHIVE — {projects.length} WORKS)
             </span>
             <span className="h-[1px] w-12 bg-gray-200 dark:bg-gray-800" />
           </div>
@@ -99,8 +100,8 @@ const WorksPage = () => {
               const isActive = activeFilter === cat;
               const count =
                 cat === 'ALL'
-                  ? projectsData.length
-                  : projectsData.filter((p) => p.category === cat).length;
+                  ? projects.length
+                  : projects.filter((p) => p.category === cat).length;
 
               return (
                 <button

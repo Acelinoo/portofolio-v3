@@ -1,17 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowUpRight } from 'react-icons/fi';
-import { projectsData, featuredProjectSlugs } from '../../../data/projectsData';
+import { useProjects } from '../../../context/ProjectsContext';
 import { useTransitionNavigate } from '../animations/TransitionContext';
 import SplitLineReveal from '../animations/SplitLineReveal';
 
 const Works = () => {
   const navigateWithTransition = useTransitionNavigate();
-
-  // Curate exactly the 4 requested flagship projects in order
-  const featuredProjects = featuredProjectSlugs
-    .map((slug) => projectsData.find((p) => p.slug === slug))
-    .filter(Boolean);
+  const { projects, featuredProjects } = useProjects();
 
   const handleProjectClick = (e, slug) => {
     e.preventDefault();
@@ -49,7 +45,7 @@ const Works = () => {
           </div>
 
           <p className="font-mono text-xs sm:text-sm text-gray-500 uppercase tracking-widest max-w-xs">
-            Showcasing 4 flagship digital products engineered across Full-Stack &amp; Frontend specialization.
+            Showcasing {featuredProjects.length} flagship digital products engineered across Full-Stack &amp; Frontend specialization.
           </p>
         </div>
 
@@ -140,7 +136,7 @@ const Works = () => {
               PORTFOLIO ARCHIVE
             </span>
             <p className="text-sm sm:text-base font-sans text-gray-700 dark:text-gray-300">
-              Explore the complete collection of {projectsData.length} web applications &amp; websites.
+              Explore the complete collection of {projects.length} web applications &amp; websites.
             </p>
           </div>
 
@@ -149,7 +145,7 @@ const Works = () => {
             onClick={handleViewAllClick}
             className="group relative inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-4.5 bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 font-mono text-xs sm:text-sm uppercase tracking-widest font-semibold shrink-0 cursor-pointer shadow-md hover:shadow-xl"
           >
-            <span>Lihat Semua Proyek ({projectsData.length})</span>
+            <span>Lihat Semua Proyek ({projects.length})</span>
             <FiArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
           </a>
         </div>

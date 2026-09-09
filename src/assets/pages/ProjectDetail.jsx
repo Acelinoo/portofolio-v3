@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FiArrowLeft, FiArrowUpRight, FiSun, FiMoon } from 'react-icons/fi';
-import { projectsData } from '../../data/projectsData';
+import { useProjects } from '../../context/ProjectsContext';
 import { useTheme } from '../components/theme/ThemeContext';
 import { useTransitionNavigate } from '../components/animations/TransitionContext';
 import SplitLineReveal from '../components/animations/SplitLineReveal';
@@ -11,10 +11,14 @@ const ProjectDetail = () => {
   const { slug } = useParams();
   const navigateWithTransition = useTransitionNavigate();
   const { theme, toggleTheme } = useTheme();
+  const { projects, allProjects } = useProjects();
 
   // Find project by slug
-  const currentIndex = projectsData.findIndex((p) => p.slug === slug);
-  const project = projectsData[currentIndex];
+  const currentIndex = projects.findIndex((p) => p.slug === slug);
+  const project =
+    currentIndex !== -1
+      ? projects[currentIndex]
+      : allProjects?.find((p) => p.slug === slug);
 
   // Scroll to top on page load / slug change
   useEffect(() => {
@@ -44,12 +48,12 @@ const ProjectDetail = () => {
   // Next & Previous projects for seamless cycling
   const prevProject =
     currentIndex > 0
-      ? projectsData[currentIndex - 1]
-      : projectsData[projectsData.length - 1];
+      ? projects[currentIndex - 1]
+      : projects[projects.length - 1];
   const nextProject =
-    currentIndex < projectsData.length - 1
-      ? projectsData[currentIndex + 1]
-      : projectsData[0];
+    currentIndex !== -1 && currentIndex < projects.length - 1
+      ? projects[currentIndex + 1]
+      : projects[0];
 
   const handleBackToWorks = (e) => {
     e.preventDefault();

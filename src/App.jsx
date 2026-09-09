@@ -4,10 +4,12 @@ import Home from "./assets/pages/index";
 import CurveTransition from "./assets/components/animations/CurveTransition";
 import { TransitionProvider } from "./assets/components/animations/TransitionContext";
 import { ThemeProvider } from './assets/components/theme/ThemeContext';
+import { ProjectsProvider } from './context/ProjectsContext';
 import SmoothScroll from "./assets/components/scroll/SmoothScroll";
 
 const WorksPage = lazy(() => import("./assets/pages/WorksPage"));
 const ProjectDetail = lazy(() => import("./assets/pages/ProjectDetail"));
+const AdminPage = lazy(() => import("./assets/pages/AdminPage"));
 const NotFound = lazy(() => import("./assets/pages/NotFound"));
 
 const Layout = () => {
@@ -30,6 +32,7 @@ const router = createBrowserRouter([
       { path: '/', element: <Home /> },
       { path: '/works', element: <WorksPage /> },
       { path: '/works/:slug', element: <ProjectDetail /> },
+      { path: '/admin', element: <AdminPage /> },
       { path: '*', element: <NotFound /> },
     ],
   },
@@ -38,7 +41,9 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <ThemeProvider>
-      <RouterProvider router={router} />
+      <ProjectsProvider>
+        <RouterProvider router={router} />
+      </ProjectsProvider>
     </ThemeProvider>
   );
 };
