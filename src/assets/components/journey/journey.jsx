@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiArrowUpRight, FiMinus, FiPlus } from 'react-icons/fi';
+import { FiArrowUpRight, FiMinus, FiPlus, FiAward } from 'react-icons/fi';
 import SplitLineReveal from '../animations/SplitLineReveal';
 
 const journeyData = [
@@ -8,17 +8,17 @@ const journeyData = [
     id: '2021',
     year: '2021',
     periodLabel: 'Foundations',
-    headline: 'First Steps in Software Engineering',
-    summary: 'SMK Yadika Soreang Software Engineering Enrollment',
+    headline: 'Starting My Software Engineering Journey',
+    summary: 'SMK Yadika Soreang — Software Engineering / Rekayasa Perangkat Lunak',
     items: [
       {
         category: 'Education',
-        role: 'Software Engineering Student',
+        role: 'Software Engineering / Rekayasa Perangkat Lunak',
         organization: 'SMK Yadika Soreang',
         period: '2021 – 2024',
         link: 'https://smkyadikasoreang.sch.id/Home',
         description:
-          'Enrolled in Software Engineering vocational track, learning HTML, CSS, JavaScript, database fundamentals, and computer programming logic.',
+          'Started my formal journey in software engineering through vocational education, building foundational skills in programming and web development.',
       },
     ],
   },
@@ -26,16 +26,16 @@ const journeyData = [
     id: '2022',
     year: '2022',
     periodLabel: 'Independent Journey',
-    headline: 'Initiation into Independent Web Development',
-    summary: 'First Client Projects • JavaScript & React Deep Dive',
+    headline: 'Independent Web Development Foundations',
+    summary: 'Web Development Practice • JavaScript • React',
     items: [
       {
         category: 'Experience',
-        role: 'Freelance Web Developer',
-        organization: 'Self-Employed',
-        period: '2022 – Present',
+        role: 'Web Development Practice • JavaScript • React',
+        organization: 'Independent Web Development',
+        period: '2022',
         description:
-          'Began taking freelance commissions, creating responsive web layouts, exploring modern JavaScript ecosystems, and developing custom web experiences.',
+          'Began developing websites independently while strengthening JavaScript, React, frontend development, and practical web development skills.',
       },
     ],
   },
@@ -43,24 +43,16 @@ const journeyData = [
     id: '2023',
     year: '2023',
     periodLabel: 'Industry Immersion',
-    headline: 'Agency Internship & Real-World Web Projects',
-    summary: 'PT Nusantech Internship • Frontend Mastery • Client Projects',
+    headline: 'Real-World Web Development Experience',
+    summary: 'PT Nusantech — Junior Web Developer / Internship • Frontend Development',
     items: [
       {
         category: 'Experience',
-        role: 'Web Developer Intern',
+        role: 'Junior Web Developer / Internship • Frontend Development',
         organization: 'PT Nusantech',
         period: '2023 – 2024',
         description:
-          'Entered formal industry internship, learning agile methodologies, frontend component architectures, and responsive web delivery.',
-      },
-      {
-        category: 'Experience',
-        role: 'Freelance Frontend Developer',
-        organization: 'Independent Client Work',
-        period: '2022 – Present',
-        description:
-          'Built custom client landing pages and interactive web interfaces, establishing frontend design and coding workflows.',
+          'Gained real-world web development experience through a long-term internship, working on practical web projects and strengthening frontend development skills.',
       },
     ],
   },
@@ -68,43 +60,26 @@ const journeyData = [
     id: '2024',
     year: '2024',
     periodLabel: 'Academic & Industry Milestones',
-    headline: 'University Commencement, Tech Internship & High School Graduation',
-    summary: 'UNIKOM Software Engineering • PT Nusantech Intern • Digipreneur Seminar • SMK Yadika Graduate',
+    headline: 'High School Graduation & University Journey',
+    summary: 'SMK Yadika Soreang — Graduation • UNIKOM — Started Undergraduate Study',
     items: [
       {
         category: 'Education',
-        role: 'Software Engineering Major',
+        role: 'Undergraduate Student — Informatics / Manajemen Informatika',
         organization: 'Universitas Komputer Indonesia (UNIKOM)',
         period: '2024 – Present',
         link: 'https://unikom.ac.id/',
         description:
-          'Commenced undergraduate degree in Software Engineering, building upon technical fundamentals with advanced computer science topics.',
-      },
-      {
-        category: 'Experience',
-        role: 'Web Developer Intern',
-        organization: 'PT Nusantech',
-        period: '2023 – 2024',
-        description:
-          'Contributed to production codebases in a professional tech agency environment, refining teamwork, clean code practices, and development workflows.',
-      },
-      {
-        category: 'Programs & Events',
-        role: 'Event Attendee',
-        organization: 'Seminar Nasional Digipreneur Vol. 2 (UNIKOM)',
-        period: 'October 12, 2024',
-        type: 'National Technology Seminar',
-        description:
-          'Gained insights into digital entrepreneurship, business scaling, tech industry trends, and creative economy dynamics.',
+          'Graduated from vocational high school and continued my education at Universitas Komputer Indonesia (UNIKOM), majoring in Informatics / Manajemen Informatika.',
       },
       {
         category: 'Education',
-        role: 'Vocational High School Degree in Software Engineering',
+        role: 'Vocational High School Graduate — Software Engineering',
         organization: 'SMK Yadika Soreang',
         period: '2021 – 2024',
         link: 'https://smkyadikasoreang.sch.id/Home',
         description:
-          'Graduated with a strong foundation in informatics, software engineering basics, and hands-on web programming.',
+          'Graduated from vocational high school with a strong foundation in software engineering fundamentals, database basics, and hands-on web programming.',
       },
     ],
   },
@@ -112,8 +87,8 @@ const journeyData = [
     id: '2025',
     year: '2025',
     periodLabel: 'Systems & Architecture',
-    headline: 'Client Systems & Network Configurations',
-    summary: 'Edamos Barbershop Web Developer • Cisco Academy Network Course',
+    headline: 'Expanding Real-World Development Experience',
+    summary: 'Edamos Barbershop — Web Developer • Cisco Networking Academy Course',
     items: [
       {
         category: 'Experience',
@@ -121,16 +96,16 @@ const journeyData = [
         organization: 'Edamos Barbershop',
         period: '2025',
         description:
-          'Analyzed business requirements and engineered a modern reservation and scheduling system concept for barbershop client operations.',
+          'Expanded practical experience through client-oriented web development while also exploring foundational networking concepts.',
       },
       {
         category: 'Programs & Events',
         role: 'Course Participant',
         organization: 'UNIKOM × Cisco Academy',
         period: 'December 2025',
-        type: 'Network Configuration Certification Course',
+        type: 'Network Configuration Course',
         description:
-          'Completed hands-on coursework on computer networking infrastructure, routing protocols, and enterprise network architecture.',
+          'Completed coursework on computer networking fundamentals, routing protocols, and enterprise network architecture.',
       },
     ],
   },
@@ -138,33 +113,33 @@ const journeyData = [
     id: '2026',
     year: '2026',
     periodLabel: 'Present',
-    headline: 'Frontend Engineering & Full-Stack Collaborations',
-    summary: 'NeoNest Collaborator • Freelance Full-Stack Developer • UNIKOM Degree',
+    headline: 'Frontend Engineering, Product Building & AI-Assisted Development',
+    summary: 'Frontend Specialist • Freelance & Self-Employed • AI-Assisted Development & Continuous Learning',
     items: [
+      {
+        category: 'Experience',
+        role: 'Frontend Specialist / Full-Stack Web Developer',
+        organization: 'Freelance & Self-Employed',
+        period: '2022 – Present',
+        description:
+          'Focused on frontend engineering, UI/UX, interactive web experiences, modern web applications, and AI-assisted development while building independent products and growing a scalable web development workflow.',
+      },
       {
         category: 'Experience',
         role: 'Frontend Collaborator',
         organization: 'NeoNest',
         period: '2024 – 2026',
         description:
-          'Collaborated on scalable web products, interface design, frontend implementation with React and Next.js, and modern GitHub-based team workflows.',
+          'Collaborated on web products through frontend implementation, interface development, React/Next.js workflows, and GitHub-based team collaboration.',
       },
       {
-        category: 'Experience',
-        role: 'Full-Stack Web Developer / Frontend Specialist',
-        organization: 'Freelance & Self-Employed',
-        period: '2022 – Present',
+        category: 'Skills Badges',
+        isBadge: true,
+        role: '28 Google Skills Badges • AI & Gemini',
+        organization: 'Google Skills',
+        period: 'Aug – Sep 2026',
         description:
-          'Delivering tailored digital experiences, web apps, and modern user interfaces for clients and independent projects with high visual and performance standards.',
-      },
-      {
-        category: 'Education',
-        role: 'Undergraduate Software Engineering',
-        organization: 'Universitas Komputer Indonesia (UNIKOM)',
-        period: '2024 – Present',
-        link: 'https://unikom.ac.id/',
-        description:
-          'Pursuing higher education in Informatics / Software Engineering, deepening algorithmic foundations, system architectures, and frontend specializations.',
+          'Earned 28 Google Skills badges focused on AI-assisted workflows, Gemini, prompting, automation, productivity, and practical AI applications.',
       },
     ],
   },
@@ -177,6 +152,8 @@ const categoryBadgeStyles = {
     'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-100 border border-gray-300 dark:border-gray-700 font-medium',
   'Programs & Events':
     'bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 border border-dashed border-gray-300 dark:border-gray-700 font-medium',
+  'Skills Badges':
+    'bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900 border border-gray-800 dark:border-gray-200 font-semibold',
 };
 
 const Journey = () => {
@@ -306,12 +283,13 @@ const Journey = () => {
                               <div>
                                 <div className="flex items-center justify-between gap-2 mb-3">
                                   <span
-                                    className={`text-[10px] sm:text-[11px] uppercase tracking-wider px-2.5 py-1 ${
+                                    className={`text-[10px] sm:text-[11px] uppercase tracking-wider px-2.5 py-1 inline-flex items-center gap-1.5 ${
                                       categoryBadgeStyles[item.category] ||
                                       'bg-gray-100 dark:bg-gray-800'
                                     }`}
                                   >
-                                    {item.category}
+                                    {item.isBadge && <FiAward className="w-3 h-3 shrink-0" />}
+                                    <span>{item.category}</span>
                                   </span>
                                   <span className="text-xs font-mono text-gray-500 dark:text-gray-400 font-medium">
                                     {item.period}

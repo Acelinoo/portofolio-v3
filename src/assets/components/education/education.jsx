@@ -5,58 +5,66 @@ import { FiChevronDown } from 'react-icons/fi';
 
 const educationData = [
   {
-    link: 'https://smkyadikasoreang.sch.id/Home',
-    title: 'SMK Yadika Soreang',
-    year: '2021 - 2024',
+    link: 'https://unikom.ac.id/',
+    title: 'Universitas Komputer Indonesia (UNIKOM)',
+    degree: 'Undergraduate Student — Informatics / Manajemen Informatika',
+    year: '2024 – Present',
     description:
-      'Pursuing a degree in Informatics to deepen my expertise in web development.',
+      'Pursuing an undergraduate degree in Informatics / Manajemen Informatika while strengthening software development, system analysis, database, and frontend engineering skills.',
   },
   {
-    link: 'https://unikom.ac.id/',
-    title: 'Universitas Komputer Indonesia',
-    year: '2024 - Present',
+    link: 'https://smkyadikasoreang.sch.id/Home',
+    title: 'SMK Yadika Soreang',
+    degree: 'Software Engineering / Rekayasa Perangkat Lunak',
+    year: '2021 – 2024',
     description:
-      'Majored in Software Engineering, where I began learning coding and web development.',
+      'Completed vocational high school education in Software Engineering (Rekayasa Perangkat Lunak), building foundational skills in programming and web development.',
   },
 ];
 
 const experienceData = [
   {
-    company: 'Freelance / Self-Employed',
-    role: 'Full-Stack Web Developer / Frontend Specialist',
+    company: 'Freelance & Self-Employed',
+    role: 'Frontend Specialist / Full-Stack Web Developer',
     period: '2022 – Present',
     description:
-      'Building modern websites and web applications for personal projects and clients, with a focus on frontend development, user experience, and scalable implementation.',
-  },
-  {
-    company: 'PT Nusantech',
-    role: 'Web Developer Intern',
-    period: '2023 – 2024',
-    description:
-      'Gained professional experience in web development through an internship, working with real-world development workflows and software projects.',
+      'Building tailored websites, web applications, and digital experiences for clients and independent projects, with a strong focus on frontend engineering, UI/UX, visual quality, performance, and AI-assisted development.',
   },
   {
     company: 'NeoNest',
     role: 'Frontend Collaborator',
     period: '2024 – 2026',
     description:
-      'Collaborated on software development, including interface design, frontend implementation, and GitHub-based development workflows.',
+      'Collaborated on web products through frontend implementation, interface development, React/Next.js workflows, and GitHub-based team collaboration.',
+  },
+  {
+    company: 'PT Nusantech',
+    role: 'Junior Web Developer / Intern',
+    period: '2023 – 2024',
+    description:
+      'Gained real-world web development experience through a long-term internship, working on practical web projects and strengthening frontend development skills.',
   },
   {
     company: 'Edamos Barbershop',
     role: 'Web Developer',
     period: '2025',
     description:
-      'Analyzed requirements and developed a reservation system concept for a barbershop business.',
+      'Expanded practical experience through client-oriented web development, analyzing requirements and designing a reservation system concept.',
   },
 ];
 
 const programsData = [
   {
+    institution: 'Google Skills',
+    title: '28 Google Skills Badges • AI & Gemini',
+    period: 'August – September 2026',
+    type: 'Skills Badges / AI Boost Bites & Workflows',
+  },
+  {
     institution: 'UNIKOM × Cisco Academy',
     title: 'Network Configuration',
     period: 'December 2025',
-    type: 'Learning Program / Course',
+    type: 'Course / Networking Foundations',
   },
   {
     institution: 'UNIKOM',
@@ -160,6 +168,11 @@ const Education = () => {
                       <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-1.5">
                         {item.title}
                       </h3>
+                      {item.degree && (
+                        <p className="text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200 mb-1.5">
+                          {item.degree}
+                        </p>
+                      )}
                       <p className="text-xs md:text-sm leading-relaxed text-gray-700 dark:text-gray-300">
                         {item.description}
                       </p>

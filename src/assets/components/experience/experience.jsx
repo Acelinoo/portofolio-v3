@@ -3,41 +3,47 @@ import { motion } from 'framer-motion';
 
 const experienceData = [
   {
-    company: 'Freelance / Self-Employed',
-    role: 'Full-Stack Web Developer / Frontend Specialist',
+    company: 'Freelance & Self-Employed',
+    role: 'Frontend Specialist / Full-Stack Web Developer',
     period: '2022 – Present',
     description:
-      'Building modern websites and web applications for personal projects and clients, with a focus on frontend development, user experience, and scalable implementation.',
-  },
-  {
-    company: 'PT Nusantech',
-    role: 'Web Developer Intern',
-    period: '2023 – 2024',
-    description:
-      'Gained professional experience in web development through an internship, working with real-world development workflows and software projects.',
+      'Building tailored websites, web applications, and digital experiences for clients and independent projects, with a strong focus on frontend engineering, UI/UX, visual quality, performance, and AI-assisted development.',
   },
   {
     company: 'NeoNest',
     role: 'Frontend Collaborator',
     period: '2024 – 2026',
     description:
-      'Collaborated on software development, including interface design, frontend implementation, and GitHub-based development workflows.',
+      'Collaborated on web products through frontend implementation, interface development, React/Next.js workflows, and GitHub-based team collaboration.',
+  },
+  {
+    company: 'PT Nusantech',
+    role: 'Junior Web Developer / Intern',
+    period: '2023 – 2024',
+    description:
+      'Gained real-world web development experience through a long-term internship, working on practical web projects and strengthening frontend development skills.',
   },
   {
     company: 'Edamos Barbershop',
     role: 'Web Developer',
     period: '2025',
     description:
-      'Analyzed requirements and developed a reservation system concept for a barbershop business.',
+      'Expanded practical experience through client-oriented web development, analyzing requirements and designing a reservation system concept.',
   },
 ];
 
 const programsData = [
   {
+    institution: 'Google Skills',
+    title: '28 Google Skills Badges • AI & Gemini',
+    period: 'August – September 2026',
+    type: 'Skills Badges / AI Boost Bites & Workflows',
+  },
+  {
     institution: 'UNIKOM × Cisco Academy',
     title: 'Network Configuration',
     period: 'December 2025',
-    type: 'Learning Program / Course',
+    type: 'Course / Networking Foundations',
   },
   {
     institution: 'UNIKOM',
