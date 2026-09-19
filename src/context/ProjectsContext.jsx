@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { allProjectsData as defaultAllProjects, featuredProjectSlugs as defaultFeaturedSlugs } from '../data/projectsData';
 
-const STORAGE_PROJECTS_KEY = 'acelino_portfolio_projects_v2';
-const STORAGE_PINNED_KEY = 'acelino_portfolio_pinned_v2';
+const STORAGE_PROJECTS_KEY = 'acelino_portfolio_projects_v3';
+const STORAGE_PINNED_KEY = 'acelino_portfolio_pinned_v3';
 
 const ProjectsContext = createContext(null);
 
@@ -10,10 +10,18 @@ export const ProjectsProvider = ({ children }) => {
   // 1. Initialize allProjects from localStorage or fallback to default
   const [allProjects, setAllProjects] = useState(() => {
     try {
-      const saved = localStorage.getItem(STORAGE_PROJECTS_KEY);
+      const saved =
+        localStorage.getItem(STORAGE_PROJECTS_KEY) ||
+        localStorage.getItem('acelino_portfolio_projects_v2');
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
+          // Merge any projects from defaultAllProjects that are not present in parsed
+          const savedSlugs = new Set(parsed.map((p) => p.slug));
+          const missingDefaults = defaultAllProjects.filter((p) => !savedSlugs.has(p.slug));
+          if (missingDefaults.length > 0) {
+            return [...missingDefaults, ...parsed];
+          }
           return parsed;
         }
       }
@@ -26,7 +34,9 @@ export const ProjectsProvider = ({ children }) => {
   // 2. Initialize pinned slugs from localStorage or fallback to default (capped at 4)
   const [pinnedSlugs, setPinnedSlugs] = useState(() => {
     try {
-      const saved = localStorage.getItem(STORAGE_PINNED_KEY);
+      const saved =
+        localStorage.getItem(STORAGE_PINNED_KEY) ||
+        localStorage.getItem('acelino_portfolio_pinned_v2');
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed)) {
@@ -182,6 +192,8 @@ export const ProjectsProvider = ({ children }) => {
     setPinnedSlugs(defaultFeaturedSlugs.slice(0, 4));
     localStorage.removeItem(STORAGE_PROJECTS_KEY);
     localStorage.removeItem(STORAGE_PINNED_KEY);
+    localStorage.removeItem('acelino_portfolio_projects_v2');
+    localStorage.removeItem('acelino_portfolio_pinned_v2');
   };
 
   /**

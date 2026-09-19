@@ -3,15 +3,49 @@ export const featuredProjectSlugs = [
   'shine-family-reflexology',
   'bokis-soreang',
   'ciyengmamim',
+  'isstracker-by-acelino',
   'gerobaklink',
   'kopimage',
 ];
 
 export const allProjectsData = [
   {
+    id: 'project-isstracker',
+    slug: 'isstracker-by-acelino',
+    number: '01',
+    title: 'isstracker-by-acelino',
+    category: 'WEB APP',
+    client: 'Open-Source Space Telemetry / Personal Project',
+    role: 'Creative Frontend Engineer & 3D Specialist',
+    started: 'September 2026',
+    timeline: 'September 2026 – Present',
+    year: '2026',
+    stack: ['Three.js', 'WebGL', 'JavaScript (ES6+)', 'Tailwind CSS', 'NASA 4K Textures', 'REST API'],
+    tech: ['Three.js', 'WebGL', 'JavaScript (ES6+)', 'Tailwind CSS', 'NASA 4K Textures', 'REST API'],
+    live: 'https://isstracker-by-acelino.vercel.app',
+    image: '/images/isstracker.webp',
+    description:
+      'A photorealistic 3D Earth visualization and real-time International Space Station (ISS) satellite telemetry tracking engine with live orbital physics and glassmorphism HUD.',
+    brief: [
+      'Visualizing orbital mechanics and satellite telemetry often suffers from flat 2D maps or sluggish, uninspiring 3D representations that fail to convey the majestic scale of low Earth orbit spaceflight.',
+      'isstracker-by-acelino was engineered by Marchelino Kurniawan as an ultra-high-definition interactive mission control platform. Powered by Three.js and custom WebGL shaders, it features 4K NASA Blue Marble textures, atmospheric Rayleigh scattering, dynamic day/night terminator lighting, live ISS coordinates via real-time REST APIs, and reverse-geocoded overflight analytics.',
+    ],
+    challenge: [
+      'Rendering multi-layered 4K Earth textures (day, night city lights, specular ocean reflection, topographic normal relief, and volumetric cloud swirls) alongside continuous orbital spline calculations at a locked 60 FPS across desktop and mobile devices.',
+    ],
+    features: [
+      'Photorealistic 4K Ultra HD Earth Engine with NASA Blue Marble, specular ocean masks, and normal topographic relief',
+      'Real-time ISS orbital tracking with live latitude, longitude, altitude, speed, and visibility telemetry',
+      'Atmospheric Rayleigh scattering ("Thin Blue Line") and dynamic solar day/night terminator calculations',
+      'Interactive Mission Control HUD with camera director modes (Follow ISS, Free Orbit, Nadir View, Close-Up)',
+      'Reverse-geocoding overflight detector identifying countries, oceans, and maritime regions in real time',
+      'Live Astronaut Expedition roster modal displaying active crew members aboard the station in space',
+    ],
+  },
+  {
     id: 'project-1',
     slug: 'gerobaklink',
-    number: '01',
+    number: '02',
     title: 'GerobakLink',
     category: 'LANDING PAGE',
     client: 'GerobakLink (Own Business)',
@@ -42,7 +76,7 @@ export const allProjectsData = [
   {
     id: 'project-2',
     slug: 'skyscapecaffe',
-    number: '02',
+    number: '03',
     title: 'Skyscape Caffe',
     category: 'LANDING PAGE',
     client: 'Skyscapecafe Punclut Bandung',
@@ -73,7 +107,7 @@ export const allProjectsData = [
   {
     id: 'project-3',
     slug: 'shine-family-reflexology',
-    number: '03',
+    number: '04',
     title: 'Shine Family Reflexology',
     category: 'LANDING PAGE',
     client: 'Shine Family Reflexology Soreang',
@@ -104,7 +138,7 @@ export const allProjectsData = [
   {
     id: 'project-4',
     slug: 'bokis-soreang',
-    number: '04',
+    number: '05',
     title: 'Bokis Soreang',
     category: 'LANDING PAGE',
     client: 'Bokis Cake & Treats Soreang',
@@ -135,7 +169,7 @@ export const allProjectsData = [
   {
     id: 'project-5',
     slug: 'ciyengmamim',
-    number: '05',
+    number: '06',
     title: 'Ciyeng Mamim',
     category: 'ECOMMERCE',
     client: 'Ciyeng Mamim (Since 2007)',
@@ -166,7 +200,7 @@ export const allProjectsData = [
   {
     id: 'project-6',
     slug: 'dapurnyaviaaa',
-    number: '06',
+    number: '07',
     title: 'Dapurnya Via',
     category: 'LANDING PAGE',
     client: 'Dapurnya Via Soreang',
@@ -197,7 +231,7 @@ export const allProjectsData = [
   {
     id: 'project-7',
     slug: 'kopimage',
-    number: '07',
+    number: '08',
     title: 'KOPIMAGE',
     category: 'LANDING PAGE',
     client: 'KOPIMAGE (Gading Tutuka & Lanud Sulaiman)',
@@ -228,7 +262,7 @@ export const allProjectsData = [
   {
     id: 'project-8',
     slug: 'saudarajayamotor',
-    number: '08',
+    number: '09',
     title: 'Saudara Jaya Motor',
     category: 'WEB APP',
     client: 'Saudara Jaya Motor Soreang',
@@ -259,7 +293,7 @@ export const allProjectsData = [
   {
     id: 'project-9',
     slug: 'lauk-at-me',
-    number: '09',
+    number: '10',
     title: 'Lauk at Me',
     category: 'ECOMMERCE',
     client: 'Fresh Seafood Retailer',
@@ -290,7 +324,7 @@ export const allProjectsData = [
   {
     id: 'project-10',
     slug: 'belajarinaja',
-    number: '10',
+    number: '11',
     title: 'BelajarinAja',
     category: 'WEB APP',
     client: 'BelajarinAja (Personal / EdTech Project)',
@@ -321,7 +355,7 @@ export const allProjectsData = [
   {
     id: 'project-11',
     slug: 'web-undangan-nikah',
-    number: '11',
+    number: '12',
     title: 'Web Undangan Nikah',
     category: 'WEB APP',
     client: 'Wedding Client / Studio',
@@ -352,7 +386,7 @@ export const allProjectsData = [
   {
     id: 'project-12',
     slug: 'monolotik',
-    number: '12',
+    number: '13',
     title: 'MONOLOTIK',
     category: 'LANDING PAGE',
     client: 'Logistics & MSME Supply Chain',
