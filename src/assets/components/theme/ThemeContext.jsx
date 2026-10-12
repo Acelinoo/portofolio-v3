@@ -11,10 +11,15 @@ export const useTheme = () => {
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('theme');
+      try {
+        // Hapus legacy stored theme agar tidak memaksa darkmode lama
+        localStorage.removeItem('theme');
+      } catch (e) {}
+
+      const saved = sessionStorage.getItem('theme');
       if (saved === 'dark' || saved === 'light') return saved;
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
     }
+    // Ketika web baru dibuka, langsung default menggunakan lightmode
     return 'light';
   });
 
@@ -22,7 +27,9 @@ export const ThemeProvider = ({ children }) => {
     const root = document.documentElement;
     root.classList.remove('dark', 'game');
     if (theme === 'dark') root.classList.add('dark');
-    localStorage.setItem('theme', theme);
+    try {
+      sessionStorage.setItem('theme', theme);
+    } catch (e) {}
   }, [theme]);
 
   const toggleTheme = () => {
